@@ -141,8 +141,8 @@ function concat(stringOne, stringTwo) {
 function join(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
     var args = Array.from(arguments);
-
-
+    // return args passing inputs as a joined string without spaces
+    return args.join("");
     // YOUR CODE ABOVE HERE //
 }
 
@@ -157,9 +157,12 @@ function join(stringOne, stringTwo) {
  */
 function longest(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
-
-
-
+    // write conditional statement for which has greater characters between stringOne and stringTwo
+    if (stringOne.length > stringTwo.length) {
+        return stringOne; // if length of stringOne is > than stringTwo then return stringOne
+    } else {
+        return stringTwo; // if not, return stringTwo
+    }
     // YOUR CODE ABOVE HERE //
 }
 
@@ -172,9 +175,7 @@ function longest(stringOne, stringTwo) {
  */
 function sortAscending(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
-
-
-
+ 
     // YOUR CODE ABOVE HERE //
 }
 
