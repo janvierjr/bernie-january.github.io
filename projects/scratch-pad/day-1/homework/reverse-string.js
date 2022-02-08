@@ -21,10 +21,14 @@
 
 function reverseString(input) {
     // YOUR CODE GOES BELOW HERE //
-    
-    
-    
-    
+      // create a variable that will contain the empty string 
+      var updateString = "";
+      // create a loop that runs through the characters of input starting with last character of string and decrement down
+      for (var i = input.length - 1; i >= 0; i--) {
+        updateString = updateString + input[i];
+      }
+      // return reveresed string
+      return updateString;
     // YOUR CODE GOES ABOVE HERE //
 }
 
