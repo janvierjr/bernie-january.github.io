@@ -74,13 +74,12 @@ function getObjectValues(object) {
  */
 function printObjectValues(object) {
   // YOUR CODE BELOW HERE //
-  // create for in loop for object values and log values
+  // create a for in loop to iterate keys in object
   for (var key in object) {
-    console.log(key.value);
+    if (object.hasOwnProperty(key)) { // check if key has values
+      console.log(object[key]); // print value tos console
+    }
   }
-
-
-
   
   // YOUR CODE ABOVE HERE //
 }
