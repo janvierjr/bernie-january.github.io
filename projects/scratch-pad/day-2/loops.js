@@ -12,10 +12,11 @@
  */
 function printArrayValues(array) {
   // YOUR CODE BELOW HERE //
-  
-  
-  
-  
+  // create a for loop that iterates through Array
+     for (var i = 0; i < array.length; i++) {
+       // print values of the array
+      console.log(array[i]);
+     }
   // YOUR CODE ABOVE HERE //
 }
 
@@ -24,11 +25,11 @@ function printArrayValues(array) {
  * using console.log().
  */
 function printArrayValuesInReverse(array) {
-  // YOUR CODE BELOW HERE //
-  
-  
-  
-  
+  // create a for loop that iterates through array in reverse
+  for (var i = array.length - 1; i >= 0; i--) {
+    // print values of the array reversed
+    console.log(array[i]);
+  }
   // YOUR CODE ABOVE HERE //
 }
 
@@ -37,10 +38,14 @@ function printArrayValuesInReverse(array) {
  */
 function getObjectKeys(object) {
   // YOUR CODE BELOW HERE //
+  // create an empty array to hold outputs
+  var array = [];  
+  // create a for in loop to evaluate object keys
+  for (let key in object) {
+    return array = Object.keys(object);
+    // return array containing object keys
   
-  
-  
-  
+  }
   // YOUR CODE ABOVE HERE //
 }
 

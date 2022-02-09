@@ -1,7 +1,7 @@
 # bernie-january.github.io
 
 **How to Install New Projects**
-1) Enter in the terminal code ~/.bashrc
+1) Enter in the terminal => code ~ /.bashrc
 2) On line 4 of .bashrc file enter => export CHE_PROJECTS_ROOT=/workspace
 3) Close .bashrc
 4) Close terminal
