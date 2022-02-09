@@ -89,10 +89,16 @@ function printObjectValues(object) {
  */
 function getObjectLength(object) {
   // YOUR CODE BELOW HERE //
-  
-  
-  
-  
+  // create a for in loop to evaluate all key/value pairs
+  for (var key in object) {
+    if (object.hasOwnProperty(key)) {
+      // return the number of key/value pairs
+      return Object.entries(object).length;
+    } 
+  }
+
+
+
   // YOUR CODE ABOVE HERE //
 }
 
@@ -102,10 +108,30 @@ function getObjectLength(object) {
  */
 function printObjectValuesInReverse(object) {
   // YOUR CODE BELOW HERE //
-  
-  
-  
-  
+  // create an empty array to hold reverse values
+ var array = [];
+ 
+ // create a for in loop to evaluate values in object
+   for (var key in object) {
+     
+    // check if object keys have values
+     if (object.hasOwnProperty(key)) {
+      
+      // push values into the array
+       array.push(object[key]);
+     }
+     
+     // create a for loop to evaluate the reverse values in array
+     for (var i = array.length - 1; i >= 0; i--) {
+       
+      // add new order of array to var array
+       array += array[i];
+       
+       // print values in array to console
+       console.log(array);
+     }
+   }
+
   // YOUR CODE ABOVE HERE //
 }
 
