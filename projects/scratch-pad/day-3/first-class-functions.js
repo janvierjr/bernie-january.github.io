@@ -13,8 +13,19 @@
  */
 function createGreaterThanFilter(base) {
     // YOUR CODE BELOW HERE //
-    
-    
+    return function(value) {
+        if (value > base) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    /* 
+    I: function accepts either an input string or number
+    O: Funciton returns a function that test whether the original input is greater than a given parameter
+    C: N/A
+    E: N/A
+    */
     
     
     // YOUR CODE ABOVE HERE //
@@ -27,10 +38,17 @@ function createGreaterThanFilter(base) {
  */
 function createLessThanFilter(base) {
     // YOUR CODE BELOW HERE //
+    // function of value returned
+    return function(value) {
+    // conditional statement to test if a value is less than base
+        if (value < base) {
+            return true;
+        } else {
+            return false;
+        }
+    }
     
-    
-    
-    
+
     // YOUR CODE ABOVE HERE //
 }
 
@@ -41,10 +59,16 @@ function createLessThanFilter(base) {
  */
 function createStartsWithFilter(startsWith) {
     // YOUR CODE BELOW HERE //
-    
-    
-    
-    
+    // return a function that has parameter of a single chararacter
+    return function(string) {
+        var character = "";
+        if (string.startsWith(character) == startsWith) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+   
     // YOUR CODE ABOVE HERE //
 }
 
@@ -71,8 +95,12 @@ function createEndsWithFilter(endsWith) {
  */
 function modifyStrings(strings, modify) {
     // YOUR CODE BELOW HERE //
-    
-    
+    // create an empty array for output
+    var array = [];
+    for (var i = 0; i < strings.length; i++) {
+        array.push(modify(strings[i]));
+        }
+    return array;
     
     
     // YOUR CODE ABOVE HERE //
@@ -89,7 +117,9 @@ function modifyStrings(strings, modify) {
  */
 function allStringsPass(strings, test) {
     // YOUR CODE BELOW HERE //
-    
+    // create an empty array for string ouput
+    var array = [];
+    for (var i = 0; i < strings.length; i++) {}
     
     
     
