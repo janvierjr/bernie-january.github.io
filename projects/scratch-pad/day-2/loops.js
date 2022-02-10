@@ -108,29 +108,15 @@ function getObjectLength(object) {
  */
 function printObjectValuesInReverse(object) {
   // YOUR CODE BELOW HERE //
-  // create an empty array to hold reverse values
- var array = [];
- 
- // create a for in loop to evaluate values in object
-   for (var key in object) {
-     
-    // check if object keys have values
-     if (object.hasOwnProperty(key)) {
-      
-      // push values into the array
-       array.push(object[key]);
-     }
-     
-     // create a for loop to evaluate the reverse values in array
-     for (var i = array.length - 1; i >= 0; i--) {
-       
-      // add new order of array to var array
-       array += array[i];
-       
-       // print values in array to console
-       console.log(array);
-     }
+  // create an empty array for outputs
+  var arr = [];
+  // push object values into array
+   arr.push(Object.values(object));
+   // create a for loop that reverse the order of array
+   for (var i = arr.length - 1; i > 0; i--) {
+     return arr = arr[i].reverse();
    }
+console.log(arr.toString());
 
   // YOUR CODE ABOVE HERE //
 }
