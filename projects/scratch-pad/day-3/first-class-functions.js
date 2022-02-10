@@ -59,10 +59,10 @@ function createLessThanFilter(base) {
  */
 function createStartsWithFilter(startsWith) {
     // YOUR CODE BELOW HERE //
+    
     // return a function that has parameter of a single chararacter
     return function(string) {
-        var character = "";
-        if (string.startsWith(character) == startsWith) {
+        if (string[0].toLowerCase() === startsWith.toLowerCase()) {
             return true;
         } else {
             return false;
@@ -79,7 +79,13 @@ function createStartsWithFilter(startsWith) {
  */
 function createEndsWithFilter(endsWith) {
     // YOUR CODE BELOW HERE //
-    
+    return function(string) {
+        if (string[string.length - 1].toLowerCase() === endsWith.toLowerCase()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
     
     
     
@@ -117,12 +123,16 @@ function modifyStrings(strings, modify) {
  */
 function allStringsPass(strings, test) {
     // YOUR CODE BELOW HERE //
+
     // create an empty array for string ouput
-    var array = [];
-    for (var i = 0; i < strings.length; i++) {}
-    
-    
-    
+    var results = [];
+    for (var i = 0; i < strings.length - 1; i++) {
+        if (test(strings[i])) {
+            results.push(strings[i]); 
+        }
+    }
+    return results;
+
     // YOUR CODE ABOVE HERE //
 }
 

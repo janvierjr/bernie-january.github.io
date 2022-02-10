@@ -15,16 +15,13 @@ function fizzBuzz() {
     function fizzBuzz() {
         // YOUR CODE GOES BELOW HERE //
         // create a for loop that iterates from 1 to 100
-        for (var i = 1; i <= 100; i++) {
-            var skip = 0;
+        for (var i = 1; i < 101; i++) {
             // if number can be divided by 3 AND 5 is true replace with "FizzBuzz" 
             if (i % 3 == 0 && i % 5 == 0) {
                console.log("FizzBuzz");
-               skip = 1;
              // else if number can be divided by ONLY 3 is true replace with "Fizz"
             } else if (i % 3 == 0) {
                 console.log("Fizz");
-                skip = 1;
              // else if number can be divided by ONLY 5 is true replace with "Buzz"
             } else if (i % 5 == 0) {
                 console.log("Buzz");

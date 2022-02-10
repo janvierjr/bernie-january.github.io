@@ -23,7 +23,18 @@
  */
 function range(start, end) {
     // YOUR CODE GOES BELOW HERE //
-    
+    //create an empty array for output 
+    var results = [];
+    if (start < end) {
+        for (var i = start; i <= end; i++) { // a loop that increments up if start < end
+            results.push(i);
+        }
+    } else if (start > end) {
+        for (var i = start; i >= end; i-- ) { // a loop that decrements down if start > end
+            results.push(i);
+        }
+    }
+    return results;
     
     
     
