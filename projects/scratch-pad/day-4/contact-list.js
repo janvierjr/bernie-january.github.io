@@ -35,21 +35,41 @@
 
 // YOUR CODE GOES BELOW HERE //
 function makeContact(id, nameFirst, nameLast) {
+    var output = {};
+    output.id = id;
+    output.nameFirst = nameFirst;
+    output.nameLast = nameLast;
 
+    return output;
 } 
+
 
 
 function makeContactList() {
     /*
      * You need something here to hold contacts. See length api for a hint:
      */
-    var contacts;
+    var contacts = [];
     
     return {
         // we implemented the length api for you //
         length: function() {
             return contacts.length;
-        }
+        },
+        addContact: function(contact) {
+            // add contact object to contacts
+            contacts.push(contact); 
+        },
+        findContact: function(fullName) { // takes in fullName like as a string "Bernie January"
+            // find contact name in contact list
+            for (var i = 0; i < contacts.length; i++) {
+                // .concat nameFirst and nameLast string to create fullName
+                fullName = nameFirst.concat(nameLast);
+                return contacts[i][fullName];
+            }
+            
+        },
+
     }
 }
 

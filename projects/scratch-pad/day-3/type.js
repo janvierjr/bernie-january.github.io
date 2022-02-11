@@ -14,7 +14,11 @@
  */
 function isArray(value) {
     // YOUR CODE BELOW HERE //
-    
+    if (Array.isArray(value)) {
+        return true;
+    } else {
+        return false;
+    }
     
     
     
@@ -31,8 +35,15 @@ function isArray(value) {
  */
 function isObject(value) {
     // YOUR CODE BELOW HERE //
-    
-    
+    // determine if typeof of the input value is 'object' AND that the values is not equal to null
+    // And that the value is not an array AND that the value is not an instance of the date object
+    if (typeof value === 'object' && value !== null && !Array.isArray(value) && value instanceof Date === false) {
+        // return true
+        return true;
+    } else {
+        // else return false
+        return false;
+    }
     
     
     // YOUR CODE ABOVE HERE //
@@ -46,8 +57,14 @@ function isObject(value) {
  */
 function isCollection(value) {
     // YOUR CODE BELOW HERE //
-    
-    
+    // if input value is array it'll pass true OR after finish other side of conditional 
+    if (Array.isArray(value) || typeof value === 'object' && value !== null && value instanceof Date === false) {
+        // return true
+        return true;
+    } else {
+        // else return false
+        return false;
+    }
     
     
     // YOUR CODE ABOVE HERE //
@@ -57,14 +74,14 @@ function isCollection(value) {
  * Given an input value, return the type of the value as a String
  * 
  * Types are one of: 
- *    - "string"
+ *    - "string" **
  *    - "array"
  *    - "object"
- *    - "undefined"
- *    - "number"
- *    - "boolean"
+ *    - "undefined" **
+ *    - "number" **
+ *    - "boolean" **
  *    - "null"
- *    - "function"
+ *    - "function" **
  *    - "date"
  * 
  * Examples:
@@ -74,6 +91,22 @@ function isCollection(value) {
  */ 
 function typeOf(value) {
     // YOUR CODE BELOW HERE //
+    // determine if the input value is not an object
+    if (typeof value !== 'object') {
+        return typeof value;
+    // else determine if value is an array
+    } else if (typeof value === 'array') {
+        return 'array';
+    // else determine if value is null
+    } else if (typeof value === null) {
+        return 'null';
+     // else determine if value is an instance of Date
+    } else if (typeof value === 'date') {
+        return 'date';
+    // else it must be an object
+    } else {
+        return 'object';
+    }
     
     
     
