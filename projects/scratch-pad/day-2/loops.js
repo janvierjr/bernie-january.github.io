@@ -77,7 +77,7 @@ function printObjectValues(object) {
   // create a for in loop to iterate keys in object
   for (var key in object) {
     if (object.hasOwnProperty(key)) { // check if key has values
-      console.log(object[key]); // print value tos console
+      console.log(object[key]); // print value to console
     }
   }
   
@@ -108,13 +108,13 @@ function getObjectLength(object) {
  */
 function printObjectValuesInReverse(object) {
   // YOUR CODE BELOW HERE //
-  var reversed = Object.values(object);
-  // create a for in loop to iterate keys in object
-  for (var i = object.length; i >= 0; i--) {
-    reversed += object[i];
-  }
-  console.log(reversed);
-  
+  // create a for loop pass through values of object in reverse
+  for (var i = Object.values(object).length - 1; i >= 0; i--) {
+    // print object values in reverse
+    console.log(Object.values(object)[i]);
+    }
+
+
   // YOUR CODE ABOVE HERE //
 }
 
