@@ -95,13 +95,13 @@ function typeOf(value) {
     if (typeof value !== 'object') {
         return typeof value;
     // else determine if value is an array
-    } else if (typeof value === 'array') {
+    } else if (typeof value === 'object' && Array.isArray(value) === true) {
         return 'array';
     // else determine if value is null
-    } else if (typeof value === null) {
+    } else if (typeof value === 'object' && value == null) {
         return 'null';
      // else determine if value is an instance of Date
-    } else if (typeof value === 'date') {
+    } else if (typeof value === 'object' && value instanceof Date === true) {
         return 'date';
     // else it must be an object
     } else {

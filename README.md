@@ -6,7 +6,7 @@
 3) Close .bashrc
 4) Close terminal
 5) Reopen terminal
-6) In your terminal enter=> sudo apt-get install subversion
+6) In your terminal enter => sudo apt-get install subversion
 7) In your terminal enter => npm install -g opspark
 8) In your terminal enter => os install
 
