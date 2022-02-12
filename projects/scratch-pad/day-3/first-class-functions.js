@@ -125,13 +125,19 @@ function allStringsPass(strings, test) {
     // YOUR CODE BELOW HERE //
 
     // create an empty array for string ouput
-    var results = [];
-    for (var i = 0; i < strings.length - 1; i++) {
-        if (test(strings[i])) {
-            results.push(strings[i]); 
-        }
-    }
-    return results;
+    var array = [];
+    // create a for loop to iterate test function through the strings
+    for (var i = 0; i < strings.length; i++) {
+            array.push(test(strings[i]));     
+    // if test returns false in array return false else return true    
+        } if (array.includes(false)) {
+            return false;
+        } else {
+            return true;
+     }
+   
+        
+
 
     // YOUR CODE ABOVE HERE //
 }
