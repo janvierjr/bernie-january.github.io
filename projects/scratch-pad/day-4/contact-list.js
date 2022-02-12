@@ -34,6 +34,7 @@
  */
 
 // YOUR CODE GOES BELOW HERE //
+// create a factory function which just means to return an output object for given inputs of id, nameFirst, nameLast
 function makeContact(id, nameFirst, nameLast) {
     var output = {};
     output.id = id;
@@ -63,18 +64,26 @@ function makeContactList() {
         findContact: function(fullName) { // takes in fullName like as a string "Bernie January"
             // find contact name in contact list
             for (var i = 0; i < contacts.length; i++) {
-                // .concat nameFirst and nameLast string to create fullName
-                fullName = nameFirst.concat(nameLast);
-                return contacts[i][fullName];
+                if (contacts[i].some(fullName) == contacts[i].nameFirst && contacts[i].come(fullName) == contacts[i].nameLast) {
+                    return contacts[i];
+                } else {
+                    return undefined;
+                }
             }
-            
         },
-
-    }
+        removeContact: function(contact) {
+            contacts.pop(contact);
+        },
+        printAllContactNames: function() {
+            for (var v = 0; v < contacts.length; v++) {
+                fullName = nameFirst.concat(nameLast);
+                var completeNames = contacts[v].fullName;
+                console.log(completeNames);
+            }
+          
+        }
+    }  
 }
-
-
-
 
 // YOUR CODE GOES ABOVE HERE //
 
