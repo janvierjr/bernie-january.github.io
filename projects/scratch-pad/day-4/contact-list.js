@@ -64,7 +64,7 @@ function makeContactList() {
         findContact: function(fullName) { // takes in fullName like as a string "Bernie January"
             // find contact name in contact list
             for (var i = 0; i < contacts.length; i++) {
-                if (contacts[i].some(fullName) == contacts[i].nameFirst && contacts[i].come(fullName) == contacts[i].nameLast) {
+                if (fullName === contacts[i]["nameFirst"] + " " + contacts[i]["nameLast"]) {
                     return contacts[i];
                 } else {
                     return undefined;
@@ -76,9 +76,7 @@ function makeContactList() {
         },
         printAllContactNames: function() {
             for (var v = 0; v < contacts.length; v++) {
-                fullName = nameFirst.concat(nameLast);
-                var completeNames = contacts[v].fullName;
-                console.log(completeNames);
+                console.log(contacts[v]["nameFirst"] + " " + contacts[v]["nameLast"] + /n/);
             }
           
         }
