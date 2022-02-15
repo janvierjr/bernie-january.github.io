@@ -75,13 +75,20 @@ function makeContactList() {
             contacts.pop(contact);
         },
         printAllContactNames: function() {
+            var newString = "";
             for (var v = 0; v < contacts.length; v++) {
-                console.log(contacts[v]["nameFirst"] + " " + contacts[v]["nameLast"] + /n/);
-            }
-          
+                if (v < contacts.length - 1) {
+                    newString = newString.concat(contacts[v]["nameFirst"] + " " + contacts[v]["nameLast"] + '\n');
+                } else if (v === contacts.length - 1) {
+                    newString = newString.concat(contacts[v]["nameFirst"] + " " + contacts[v]["nameLast"]);
+                }
+             }
+             return newString;
         }
-    }  
-}
+          
+    }
+}  
+
 
 // YOUR CODE GOES ABOVE HERE //
 
