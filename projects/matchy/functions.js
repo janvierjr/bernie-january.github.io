@@ -38,17 +38,27 @@ function replace(array, nameSearch, replacement) {
 function remove(array, nameSearch) {
     for (var i = 0; i < array.length; i++) {
         if (array[i]["name"] === nameSearch) {
-            array.pop(array[i]);
+            array.splice(i, 1);
         }
     }
-}
+}   
 
 
 //////////////////////////////////////////////////////////////////////
 // Step 4 - Add ///////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
-function add(animals, animal) {
-    
+function add(array, newObj) {
+    for (var i = 0; i < array.length; i++) {
+        if (newObj.hasOwnProperty("name") 
+        && newObj["name"].length > 0 === true 
+        && newObj.hasOwnProperty("species") 
+        && newObj["species"].length > 0 === true 
+        && newObj["name"] != array[i]["name"]) {
+            array.push(newObj);
+        } else {
+            return array;
+        }
+    }
 }
 
 
