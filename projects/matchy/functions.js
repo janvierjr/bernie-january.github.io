@@ -12,38 +12,35 @@
 //////////////////////////////////////////////////////////////////////
 // Step 1 - Search ///////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
-// function search(list, name) {
-//     for (var i = 0; i < list.length; i++) {
-//         if (list.includes(list[i][name])) {
-//             return list[name];    
-//     } else {
-//         return null;
-//     }
-// }
-// }
-function search(nameSearch, array) {
+
+function search(array, nameSearch) {
     for (var i = 0; i < array.length; i++) {
-        if (array[i]["name"] === nameSearch || array[i]["name".toLowerCase()] === nameSearch) {
+        if (array[i]["name"] === nameSearch) {
             var found = array[i];
             return found;    
-         } else {
-            return found = null;
-      }
- }
+         } 
+    }
+    return null;
 }
 //////////////////////////////////////////////////////////////////////
 // Step 2 - Replace //////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
-function replace(animals, name, replacement) {
-
+function replace(array, nameSearch, replacement) {
+    for (var i = 0; i < array.length; i++) {
+        if (array[i]["name"] === nameSearch) {
+            array[i] = replacement;
+     }
+    }
 }
-
-
 //////////////////////////////////////////////////////////////////////
 // Step 3 - Remove ///////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
-function remove(animals, name) {
-
+function remove(array, nameSearch) {
+    for (var i = 0; i < array.length; i++) {
+        if (array[i]["name"] === nameSearch) {
+            array.pop(array[i]);
+        }
+    }
 }
 
 
