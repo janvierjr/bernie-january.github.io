@@ -96,7 +96,7 @@ getRandom(animals);
 friends.push(animals[getRandom(animals)]["name"]);
 console.log(friends);
 
-animals[1]["friends"] = friends;
+animals[0]["friends"] = friends;
 console.log(animals);
 
 /**
