@@ -177,10 +177,10 @@ function sortAscending(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
     // if stringOne is greater than stringTwo return -1
     if (stringOne > stringTwo) {
-        return -1;
+        return 1;
     // if stringOne is less than stringTwo return 1
     } else if (stringOne < stringTwo) {
-        return 1;
+        return -1;
     // else return 0 if stringOne is not less than or greater than stringTwo
     } else {
         return 0;
@@ -200,10 +200,10 @@ function sortDescending(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
     // if stringOne is less than stringTwo return -1
     if (stringOne < stringTwo) {
-        return -1;
+        return 1;
     // if stringOne is greater than stringTwo return 1  
     } else if (stringOne > stringTwo) {
-        return 1;
+        return -1;
     // else stringOne is = to stringTwo return 0
     } else {
         return 0;
