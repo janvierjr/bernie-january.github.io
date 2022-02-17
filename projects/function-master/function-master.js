@@ -46,7 +46,7 @@ function arrayOrObject(collection) {
 //////////////////////////////////////////////////////////////////////
 
 function capitalizeWord(string) {
-    return string.toUpperCase();
+    return string[0].toUpperCase() + string.substring(1);
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -54,7 +54,11 @@ function capitalizeWord(string) {
 //////////////////////////////////////////////////////////////////////
 
 function capitalizeAllWords(string) {
-    return string.toUpperCase();
+    var arrayCap = string.toUpperCase().split();
+    for (var i = 0; i < arrayCap.length; i++) {
+        arrayCap += arrayCap[i];
+    }
+    return arrayCap;
 }
 
 //////////////////////////////////////////////////////////////////////
