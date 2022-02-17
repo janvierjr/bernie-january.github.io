@@ -9,7 +9,6 @@
 6) In your terminal enter => sudo apt-get install subversion
 7) In your terminal enter => npm install -g opspark
 8) In your terminal enter => os install
-9) token: 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
 
 **Github commands**
 1) In the terminal enter => git add -A
