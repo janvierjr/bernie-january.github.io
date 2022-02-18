@@ -11,9 +11,8 @@ function objectValues(object) {
 //////////////////////////////////////////////////////////////////////
 
 function keysToString(object) {
-    var array = Object.keys(object);
-    var string = array.toString();
-    return string;
+    return Object.keys(object).join(" ");
+
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -22,8 +21,12 @@ function keysToString(object) {
 
 function valuesToString(object) {
     var array = Object.values(object);
-    var string = array.toString();
-    return string;
+    for (var i = 0; i < array.length; i++) {
+      if (typeof array[i] !== "string" || typeof array[i] == "boolean") {
+        array.splice(i, 1);
+        return array.join(" ");
+      }
+    }
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -31,13 +34,11 @@ function valuesToString(object) {
 //////////////////////////////////////////////////////////////////////
 
 function arrayOrObject(collection) {
-    if (typeof collection === "object" && collection === Array.isArray(collection)) {
-        return "array";
-    } else if (collection !== Array.isArray(collection) && typeof collection === "object" 
-    && typeof collection !== null
-    && typeof collection !== undefined
-    && typeof collection !== new Date()) {
+    if (typeof collection === "object" && !Array.isArray(collection)) {
         return "object";
+    } 
+    if (Array.isArray(collection)) {
+        return "array";
     }
 }
 
@@ -53,52 +54,88 @@ function capitalizeWord(string) {
 // Function 6 - Capitalize All Words /////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
+
 function capitalizeAllWords(string) {
-    var arrayCap = string.toUpperCase().split();
-    for (var i = 0; i < arrayCap.length; i++) {
-        arrayCap += arrayCap[i];
-    }
-    return arrayCap;
+    
+    var capitalize = function(str) {
+        return str[0].toUpperCase() + str.substring(1);
+     }
+    var wordsArray = string.split(" ").map(capitalize);
+    return wordsArray.join(" ");
 }
+
 
 //////////////////////////////////////////////////////////////////////
 // Function 7 - Welcome Message //////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
-function welcomeMessage(object) {
 
+function welcomeMessage(object) {
+    if (object["name"]) {
+        var string = object["name"];
+        string = string[0].toUpperCase() + string.substring(1);
+        var message = "Welcome " + string + "!";
+        return message;
+    }
 }
+
 
 //////////////////////////////////////////////////////////////////////
 // Function 8 - Profile Info /////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
 function profileInfo(object) {
-
+    if (object["name"] && object["species"]) {
+      var stringName = object["name"];
+        stringName = stringName[0].toUpperCase() + stringName.substring(1);
+      var stringSpecies = object["species"]
+        stringSpecies = stringSpecies[0].toUpperCase() + stringSpecies.substring(1);
+      var message = stringName + " is a " + stringSpecies;
+      return message;
+    }
 }
+
 
 //////////////////////////////////////////////////////////////////////
 // Function 9 - Maybe Noises /////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
 function maybeNoises(object) {
-
-}
+    var array = Object.keys(object);
+      for (var i = 0; i < array.length; i++) {
+         if (array[i] = [] || array[i] == undefined) {
+          return "there are no noises"
+        } else if (array[i] = "noises") {
+          return array[i]["noises"];
+        } else {
+          return "there are no noises"
+        }
+      }
+    }
 
 //////////////////////////////////////////////////////////////////////
 // Function 10 - Has Words ///////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
 function hasWord(string, word) {
-
-}
+    if (string.includes(word)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 
 //////////////////////////////////////////////////////////////////////
 // Function 11 - Add Friend //////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
-function addFriend (name, object) {
-
+function addFriend(name, object) {
+  for (key in object) {
+    if(Array.isArray(object[key])) {
+      object[key].push(name);
+      return object;
+    }
+  }
 }
 
 //////////////////////////////////////////////////////////////////////
