@@ -101,17 +101,15 @@ function profileInfo(object) {
 //////////////////////////////////////////////////////////////////////
 
 function maybeNoises(object) {
-    var array = Object.keys(object);
-      for (var i = 0; i < array.length; i++) {
-         if (array[i] = [] || array[i] == undefined) {
-          return "there are no noises"
-        } else if (array[i] = "noises") {
-          return array[i]["noises"];
-        } else {
-          return "there are no noises"
-        }
+    if (object && object["noises"]) {
+      if (Array.isArray(object["noises"])) {
+        if (object["noises"].length > 0) {
+          return object["noises"].join(" ");
+        } 
       }
-    }
+    } 
+    return "there are no noises";
+  }  
 
 //////////////////////////////////////////////////////////////////////
 // Function 10 - Has Words ///////////////////////////////////////////
@@ -143,7 +141,18 @@ function addFriend(name, object) {
 //////////////////////////////////////////////////////////////////////
 
 function isFriend(name, object) {
-
+  if (object === {}) {
+     return false;
+  } else {
+      for (key in object) {
+     } if (!('friends' in object)) {
+       return false;
+     } else if (object["friends"].includes(name)) {
+         return true;
+     } else {
+       return false;
+     }
+  }
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -151,15 +160,42 @@ function isFriend(name, object) {
 //////////////////////////////////////////////////////////////////////
 
 function nonFriends(name, array) {
+  var everyone = [];
+  var notFriends = [];
+  var current = null;
+
+  for (var i = 0; i < array.length; i++) {
+      if (name === array[i].name) {
+          current = array[i];
+      } else {
+          everyone.push(array[i].name);
+      }
+  }
+
+  if (current === null){
+      return everyone;
+  }
+
+  for (var i = 0; i < everyone.length; i++) {
+      if (current.friends.indexOf(everyone[i]) == -1) {
+          notFriends.push(everyone[i]);
+      }
+  }
+
+  return notFriends;
 
 }
+
 
 //////////////////////////////////////////////////////////////////////
 // Function 14 - Update Object ///////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
 function updateObject(object, key, value) {
-
+  for (var prop in object) {
+    object[key] = value;
+    return object;
+  }
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -167,15 +203,35 @@ function updateObject(object, key, value) {
 //////////////////////////////////////////////////////////////////////
 
 function removeProperties(object, array) {
-
+  for (var key in object) {
+    for (var i = 0; i < array.length; i++) {
+        if (object[array[i]] === object[key]) {
+          delete object[array[i]];
+      }
+    }
+  }
+   return object;
 }
+
 
 //////////////////////////////////////////////////////////////////////
 // Function 16 - Dedup ///////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
 function dedup(array) {
-
+  var noDups = [];
+  for (var i = 0; i < array.length; i++) {
+    let duplicates = false;
+    for (var j = 0; j < noDups.length; j++) {
+      if (array[i] === noDups[j]) {
+        duplicates = true;
+      }
+    }
+    if (!duplicates) {
+      noDups.push(array[i]);
+    }
+  }
+  return noDups;
 }
 
 //////////////////////////////////////////////////////////////////////
