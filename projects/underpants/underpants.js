@@ -258,6 +258,16 @@ _.filter = function(array, func) {
 *   _.reject([1,2,3,4,5], function(e){return e%2 === 0}) -> [1,3,5]
 */
 
+_.reject = function(array, func) {
+    let newArray = [];
+    for (var i = 0; i < array.length; i++) {
+        let element = array[i];
+        if (func(element, i, array) !== true) {
+            newArray.push(element);
+        }
+    }
+    return newArray;
+}
 
 /** _.partition
 * Arguments:
