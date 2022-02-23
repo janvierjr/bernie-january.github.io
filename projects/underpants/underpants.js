@@ -158,6 +158,11 @@ _.indexOf = function(array, value) {
 *   _.contains([1,"two", 3.14], "two") -> true
 */
 
+_.contains = function(array, value) {
+    for (var i = 0; i < array.length; i++) {
+        return (array.includes(value) ? true : false);
+    }
+}
 
 /** _.each
 * Arguments:
@@ -188,6 +193,7 @@ _.each = function(collection, action) {
     }
 }
 
+
 /** _.unique
 * Arguments:
 *   1) An array
@@ -198,6 +204,16 @@ _.each = function(collection, action) {
 *   _.unique([1,2,2,4,5,6,5,2]) -> [1,2,4,5,6]
 */
 
+
+._unique = function(array) {
+    let newArray = [];
+    for (var i = 0; i < array.length; i++) {
+        if(newArray.indexOf(array[i]) === -1) {
+            newArray.push(array[i]);
+        }
+    }
+    return newArray;
+}
 
 /** _.filter
 * Arguments:
