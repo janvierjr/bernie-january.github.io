@@ -113,6 +113,9 @@ _.first = function(array, number) {
 *   _.last(["a", "b", "c"], 2) -> ["b", "c"]
 */
 
+_.last = function(array, number) {
+
+}
 
 /** _.indexOf
 * Arguments:
@@ -205,7 +208,7 @@ _.each = function(collection, action) {
 */
 
 
-._unique = function(array) {
+_.unique = function(array) {
     let newArray = [];
     for (var i = 0; i < array.length; i++) {
         if(newArray.indexOf(array[i]) === -1) {
