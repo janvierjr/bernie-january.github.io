@@ -234,6 +234,16 @@ _.unique = function(array) {
 *   use _.each in your implementation
 */
 
+_.filter = function(array, func) {
+    let newArray = [];
+    for (var i = 0; i < array.length; i++) {
+        let element = array[i];
+        if (func(element, i, array) == true) {
+            newArray.push(element);
+        }
+    }
+    return newArray;
+}
 
 /** _.reject
 * Arguments:
