@@ -80,17 +80,20 @@ _.typeOf = function(value) {
 
 
 _.first = function(array, number) {
+    let result = [];
     for (var i = 0; i < array.length; i++) {
-        if (!Array.isArray(array)) {
-            return [];
-       } else if (number === undefined || number === NaN) {
-           return array[0];
-  
-      } else if (number < 0) {
-        return array[i];
-      }    
+        if (typeof number !== "number" || number == null || number == undefined) {
+            result += array[0];
+            } else if (!Array.isArray(array)) {
+                result += result;
+            } else if (array[i] == number) {
+                result += array[i];
+            } else if (array > array.length) {
+                result += array;
+            }
+        return result;
     }
- }
+}
 
 /** _.last
 * Arguments:
@@ -126,6 +129,18 @@ _.first = function(array, number) {
 *   _.indexOf(["a","b","c"], "c") -> 2
 *   _.indexOf(["a","b","c"], "d") -> -1
 */
+
+_.indexOf = function(array, value) {
+    let results = -1;
+    for (var i = 0; i < array.length - 1; i++) {
+        if (Array.isArray(value)) {
+            results;
+        } else if (array[i] === value) {
+            results = i;
+        } 
+    }
+    return results;
+}
 
 
 /** _.contains
