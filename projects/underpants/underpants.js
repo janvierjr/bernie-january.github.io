@@ -80,20 +80,24 @@ _.typeOf = function(value) {
 
 
 _.first = function(array, number) {
-    let result = [];
-    for (var i = 0; i < array.length; i++) {
-        if (typeof number !== "number" || number == null || number == undefined) {
-            result += array[0];
-            } else if (!Array.isArray(array)) {
-                result += result;
-            } else if (array[i] == number) {
-                result += array[i];
-            } else if (array > array.length) {
-                result += array;
-            }
+    var result = [];
+        if (!Array.isArray(array)) {
+            return result;
+             } else if (typeof number !== "number" || number === "undefined") {
+                  return array[0];
+             } else if (number > array.length) {
+                  return array;
+        } else {
+            for (var i = 0; i < number; i++) {
+            result.push(array[i]);
+        }   
         return result;
     }
 }
+    
+
+
+
 
 /** _.last
 * Arguments:
@@ -114,7 +118,19 @@ _.first = function(array, number) {
 */
 
 _.last = function(array, number) {
-
+    let result = [];
+    if (!Array.isArray(array)) {
+    return result;
+        } else if (typeof number !== "number" || number === "undefined") {
+            return array[array.length - 1];
+        } else if (number > array.length) {
+            return array;
+    } else {
+        for (let i = 0; i < number; i++) {
+            result.unshift(array[number - i])
+        }
+    }
+    return result;
 }
 
 /** _.indexOf
@@ -288,6 +304,9 @@ _.reject = function(array, func) {
 }
 */
 
+_.partition = function(array, func) {
+
+}
 
 /** _.map
 * Arguments:
@@ -339,6 +358,41 @@ _.reject = function(array, func) {
 *   _.every([1,2,3], function(e){return e % 2 === 0}) -> false
 */
 
+_.every = function(collection, func) {
+    // determine if func is defined
+    if (func === undefined) {
+        if (Array.isArray(collection)) {
+            for (let i = 0; i < collection.length; i++) {
+                if (!collection[i]) { // if the current value in the array is FALSY
+                    return false;
+                } 
+            } 
+        } else { 
+            for (let key in collection) {
+                if (!collection[key]) {
+                    return false;
+                }
+            } 
+        }
+
+    } else {
+        if (Array.isArray(collection)) {
+            for (let i = 0; i < collection.length; i++) {
+                let element = collection[i];
+                if (func(element, i, collection) === false) {
+                    return false;
+                }
+            }
+        } else {
+            for (let key in collection) {
+                if(!collection[key]) {
+                    return false;
+                }
+            }
+        }
+    }
+    return true;
+}
 
 /** _.some
 * Arguments:
@@ -396,6 +450,10 @@ _.reject = function(array, func) {
 *   _.extend(data, {b:"two"}); -> data now equals {a:"one",b:"two"}
 *   _.extend(data, {a:"two"}); -> data now equals {a:"two"}
 */
+
+_.extend = function(...inputs) {
+    // similar conceptually the Object.assign from lecture - think ES6, with Spread operator... if console.log(inputs); =>. [{a: 1}, {b: 2}, {c: 3}];
+}
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
