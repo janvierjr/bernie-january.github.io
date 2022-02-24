@@ -305,7 +305,17 @@ _.reject = function(array, func) {
 */
 
 _.partition = function(array, func) {
-
+    let result = [];
+        for (let i = 0; i < array.length; i++) {
+            var element = array[i]
+            var collection = func(element, i, array);
+            if (collection) {
+                result.push(Array.from(array[i]));
+            } else if (!collection) {
+                result.push(element);
+            }
+        }
+    return result;
 }
 
 /** _.map
