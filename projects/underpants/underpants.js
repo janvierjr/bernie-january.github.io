@@ -305,14 +305,13 @@ _.reject = function(array, func) {
 */
 
 _.partition = function(array, func) {
-    let result = [];
+    let result = [[],[]];
         for (let i = 0; i < array.length; i++) {
-            var element = array[i]
-            var collection = func(element, i, array);
-            if (collection) {
-                result.push(Array.from(array[i]));
-            } else if (!collection) {
-                result.push(element);
+            var collection = func(array[i], i, array);
+            if (!!collection) {
+                result[0].push(array[i]);
+            } else {
+                result[1].push(array[i]);
             }
         }
     return result;
@@ -334,6 +333,21 @@ _.partition = function(array, func) {
 *   _.map([1,2,3,4], function(e){return e * 2}) -> [2,4,6,8]
 */
 
+_.map = function(collection, func) {
+    let mapped = [];
+    if (Array.isArray(collection)) {
+        for (let i = 0; i < collection.length; i++) {
+            let element = collection[i];
+            var result = func(element, i, collection); // invoke the callback function, passing in the current valueof the array, the current index, and the array itself
+            mapped.push(result);
+        }
+    } else {  // else it's an object
+        for (let key in collection) {
+            mapped.push(func(collection[key], key, collection));
+        }
+    }
+    return mapped;
+}
 
 /** _.pluck
 * Arguments:
@@ -346,6 +360,14 @@ _.partition = function(array, func) {
 *   _.pluck([{a: "one"}, {a: "two"}], "a") -> ["one", "two"]
 */
 
+_.pluck = function (array, prop) {
+    for (let i = 0; i < array.length; i++) {
+        var output = _.map(array, function(object) {
+            return object.name;
+        });
+    }
+    return output;
+}
 
 /** _.every
 * Arguments:
@@ -445,6 +467,22 @@ _.every = function(collection, func) {
 *   _.reduce([1,2,3], function(previousSum, currentValue, currentIndex){ return previousSum + currentValue }, 0) -> 6
 */
 
+_.reduce = function(array, func, seed) {
+    // create accumulator variable
+    let accumulator;
+    if (seed === undefined) {
+        accumulator = array[0];
+        for (let i = 1; i < array.length; i++) {
+            accumulator = func(accumulator, array[i], i, array);
+        }
+    } else {
+        accumulator = seed;
+        for (let i = 0; i < array.length; i++) {
+            accumulator = func(accumulator, array[i], i, array);
+        }
+    }
+    return accumulator;
+}
 
 /** _.extend
 * Arguments:
