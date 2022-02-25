@@ -360,10 +360,12 @@ _.map = function(collection, func) {
 *   _.pluck([{a: "one"}, {a: "two"}], "a") -> ["one", "two"]
 */
 
-_.pluck = function (array, prop) {
+_.pluck = function (array, key) {
     for (let i = 0; i < array.length; i++) {
         var output = _.map(array, function(object) {
-            return object.name;
+            for (key in object) {
+                return object[key];
+            }
         });
     }
     return output;
@@ -446,6 +448,48 @@ _.every = function(collection, func) {
 *   _.some([1,3,5], function(e){return e % 2 === 0}) -> false
 *   _.some([1,2,3], function(e){return e % 2 === 0}) -> true
 */
+
+_.some = function(collection, func) {
+        if (func === undefined) {
+            if (Array.isArray(collection)) {
+                for (let i = 0; i < collection.length; i++) {
+                    if (!collection[i]) { // if the current value in the array is FALSY
+                        return false;
+                    } 
+                } 
+            } else { 
+                for (let key in collection) {
+                    if (!collection[key]) {
+                        return false;
+                    }
+                } 
+            }
+    
+        } else {
+            if (Array.isArray(collection)) {
+                let truth = [];
+                for (let i = 0; i < collection.length; i++) {
+                    if (func(collection[i]) == true) {
+                        truth.push(collection[i]);
+                        if (truth.length > 0) {
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    }
+                }
+            } else {
+                for (let key in collection) {
+                    if(collection[key]) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
+    }
 
 
 /** _.reduce
