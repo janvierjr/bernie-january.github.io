@@ -467,17 +467,14 @@ _.some = function(collection, func) {
     
         } else {
             if (Array.isArray(collection)) {
-                let truth = [];
                 for (let i = 0; i < collection.length; i++) {
-                    if (func(collection[i]) == true) {
-                        truth.push(collection[i]);
-                        if (truth.length > 0) {
+                    if (func(collection[i], i, collection) === true) {
                             return true;
                         } else {
                             return false;
                         }
                     }
-                }
+                
             } else {
                 for (let key in collection) {
                     if(collection[key]) {
@@ -543,8 +540,13 @@ _.reduce = function(array, func, seed) {
 *   _.extend(data, {a:"two"}); -> data now equals {a:"two"}
 */
 
-_.extend = function(...inputs) {
+_.extend = function(object, ...inputs) {
     // similar conceptually the Object.assign from lecture - think ES6, with Spread operator... if console.log(inputs); =>. [{a: 1}, {b: 2}, {c: 3}];
+    var newObject = {};
+        for (let i = 0; i < inputs.length; i++) {
+            newObject = Object.assign(object, inputs[i]);
+        }
+    return newObject;
 }
 
 //////////////////////////////////////////////////////////////////////

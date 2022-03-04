@@ -40,7 +40,15 @@ var femaleCount = function(array) {
      return femaleNumber;
 }
 
-var oldestCustomer;
+
+var oldestCustomer = function(array) {
+  var output = "";
+  for (let i = 0; i < array.length; i++) {
+        var oldAge = sortBy(array, "name");
+        output.concat(oldAge[array[i].length - 1]["name"]);
+    }
+  return output;
+}
 
 var youngestCustomer;
 
