@@ -468,18 +468,18 @@ _.some = function(collection, func) {
         } else {
             if (Array.isArray(collection)) {
                 for (let i = 0; i < collection.length; i++) {
-                    if (func(collection[i], i, collection) === true) {
+                    if (func(collection) !== true && func(collection[i]) == true) {
                             return true;
-                        } else {
+                        } else if (func(collection) !== true && func(collection[i]) == false) {
                             return false;
                         }
                     }
                 
             } else {
                 for (let key in collection) {
-                    if(collection[key]) {
+                    if(collection[key] == true) {
                         return true;
-                    } else {
+                    } else if (!collection[key]) {
                         return false;
                     }
                 }
