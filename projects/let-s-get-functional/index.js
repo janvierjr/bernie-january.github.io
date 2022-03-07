@@ -42,13 +42,13 @@ var femaleCount = function(array) {
 
 
 var oldestCustomer = function(array) {
-  var output = "";
-  for (let i = 0; i < array.length; i++) {
-        var oldAge = sortBy(array, "name");
-        output.concat(oldAge[array[i].length - 1]["name"]);
-    }
-  return output;
-}
+    var customer = " ";
+      var oldAge = find(array, function(customer){
+        return Math.max(customer.age)
+      });
+      customer.concat(customers.name);
+      return customer; 
+} 
 
 var youngestCustomer;
 
