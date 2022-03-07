@@ -32,10 +32,16 @@ nameFirst = "penny";
 console.log(nameFirst) // prints => bernie
 
  // 2b. let
+// containers whose values are reassignable but are NOT hoisted to their code block
+// used inside a block, let limit's the variables scope to within that block 
+let catName = "kitty";
+console.log(catName); // prints => kitty
+catName = "catty";
+console.log(catName); // prints => catty 
 
 
  // 2c. const
-// containers whose values can never change; they are block scoped, and not hoisted to the top of their block scope
+// containers whose values can never change; they are block scoped i.e. pinned to code block they are declared/assigned, and not hoisted to the top of their block scope
 // constants must be assigned a value and cannot be reassigned
 const numberTwo = 2;
 console.log(numberTwo); // prints => 2
@@ -43,4 +49,15 @@ numberTwo = 3;
 console.log(numberTwo) // prints => 2 cannot be reassigned after assigned to 2
  
  // 3. Hoisting
- // const variables are never hoisted to top of block scope
+ // const containers are NEVER hoisted to top of block scope
+console.log(variableConst); // throws error, as cannot be hoisted 
+
+ // let containers are NOT hoisted to their code block and cannot be referenced before it's declared
+console.log(variableLet); // throws error, as scoped only to if-block
+
+ var petName = "spot";
+ if (petName === "spot") {
+     console.log(variableLet); // throws error, let can't be refereced before being declared
+    let variableLet = "new pup";
+    const variableConst = "old pup";
+ };
