@@ -453,40 +453,36 @@ _.some = function(collection, func) {
         if (func === undefined) {
             if (Array.isArray(collection)) {
                 for (let i = 0; i < collection.length; i++) {
-                    if (!collection[i]) { // if the current value in the array is FALSY
-                        return false;
+                    if (collection[i]) { // if the current value in the array is FALSY
+                        return true;
                     } 
                 } 
             } else { 
                 for (let key in collection) {
-                    if (!collection[key]) {
+                    if (collection[key]) {
                         return false;
                     }
                 } 
             }
     
+     } else {
+         if (Array.isArray(collection)) {
+            for (let i = 0; i < collection.length; i++) {
+                let element = collection[i];
+                if (func(element, i, collection) === true) {
+                    return true;
+                }
+            }
         } else {
-            if (Array.isArray(collection)) {
-                for (let i = 0; i < collection.length; i++) {
-                    if (func(collection) !== true && func(collection[i]) == true) {
-                            return true;
-                        } else if (func(collection) !== true && func(collection[i]) == false) {
-                            return false;
-                        }
-                    }
-                
-            } else {
-                for (let key in collection) {
-                    if(collection[key] == true) {
-                        return true;
-                    } else if (!collection[key]) {
-                        return false;
-                    }
+            for (let key in collection) {
+                if(collection[key]) {
+                    return true;
                 }
             }
         }
-        return true;
     }
+    return false;
+}
 
 
 /** _.reduce
