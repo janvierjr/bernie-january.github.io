@@ -78,9 +78,17 @@ var isEven = function(n) {
 
 var sumBelow = function(n) {
   // base
-  
+  if (n === 0) {
+    return 0;
+  }
   // recursion
-  return n + sumBelow(n - 1)
+  if (n === 0) {
+    return 0 + sumBelow(n - 1);
+  } else if (n < 0) {
+    return (n * -1) + sumBelow(n + 1);
+   } else if (n > 0) {
+    return n + sumBelow(n - 1);
+  }
 };
 
 /*
@@ -92,7 +100,16 @@ var sumBelow = function(n) {
 
 // 6. Get the integers in range (x, y).
 // Example:  range(2, 9);  // [3, 4, 5, 6, 7, 8]
-var range = function(x, y) {
+var range = function(x, y, output = []) {
+  // base
+  if (x === y) {
+    return output;
+  }
+  if ((x + 1) !== y) {
+    output.push(x + 1)
+  }
+  //recursion
+  return range(x + 1, y, output);
 };
 
 // 7. Compute the exponent of a number.
@@ -101,6 +118,15 @@ var range = function(x, y) {
 // Example:  exponent(4,3);  // 64
 // https://www.khanacademy.org/computing/computer-science/algorithms/recursive-algorithms/a/computing-powers-of-a-number
 var exponent = function(base, exp) {
+  // base
+  if (exp === 0) {
+    return base = 1;
+  }
+  // recursion
+  if (exp > 0 && exp % 2 == 0) {
+    base * base
+    return exponent(exp - 1);
+  }
 };
 
 // 8. Determine if a number is a power of two.
@@ -111,7 +137,15 @@ var powerOfTwo = function(n) {
 };
 
 // 9. Write a function that accepts a string a reverses it.
-var reverse = function(string) {
+var reverse = function(string, output="") {
+  // base
+  if (string.charAt(0) === string[string.length - 1])
+  return output;
+  // recursion
+  if (string.length !== 0) {
+    output += string.charAt(string.length - 1);
+  } 
+  return reverse(string.slice(string.length - 1), output);
 };
 
 // 10. Write a function that determines if a string is a palindrome.
