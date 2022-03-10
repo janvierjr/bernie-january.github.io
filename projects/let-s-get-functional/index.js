@@ -34,7 +34,7 @@ var maleCount = function(array) {
 var femaleCount = function(array) {
     var femaleNumber = 0;
     var females = _.filter(array, function(customer){
-      return customer.gender === "female"; // => [ {male object}, {male object}, {male object}, ...]
+      return customer.gender === "female"; 
     }); 
      femaleNumber += females.length;
      return femaleNumber;
@@ -42,19 +42,21 @@ var femaleCount = function(array) {
 
 
 var oldestCustomer = function(array) {
-    var customer = " ";
-      var oldAge = find(array, function(customer){
-        return Math.max(customer.age)
-      });
-      customer.concat(customers.name);
-      return customer; 
-} 
+  var oldAge = _.max(array, function(customer){
+    return customer.age;
+  });
+  return oldAge;
+}
 
 var youngestCustomer;
 
 var averageBalance;
 
-var firstLetterCount;
+var firstLetterCount = function(array, letter) {
+  var letterCount = 0;
+  var firstLetter = _.indexOf(array, array[0]) 
+  return letterCount = number + 1;
+}
 
 var friendFirstLetterCount;
 
