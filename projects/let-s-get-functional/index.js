@@ -23,7 +23,7 @@ var _ = require('underbar');
 
 var maleCount = function(array) {
     var maleNumber = 0;
-    var males = _.filter(array, function(customer){
+    var males = array.filter(function(customer){
       return customer.gender === "male"; // => [ {male object}, {male object}, {male object}, ...]
     }); 
      maleNumber += males.length;
@@ -33,7 +33,7 @@ var maleCount = function(array) {
 
 var femaleCount = function(array) {
     var femaleNumber = 0;
-    var females = _.filter(array, function(customer){
+    var females = array.filter(function(customer){
       return customer.gender === "female"; 
     }); 
      femaleNumber += females.length;
@@ -42,20 +42,44 @@ var femaleCount = function(array) {
 
 
 var oldestCustomer = function(array) {
-  var oldAge = _.max(array, function(customer){
-    return customer.age;
-  });
-  return oldAge;
+  var oldAge = array.reduce(function (prev, curr){
+    if (prev.age > curr.age) {
+      return prev;
+    } else {
+      return curr;
+    }
+     
+  })
+  return oldAge.name;
 }
 
-var youngestCustomer;
+var youngestCustomer = function(array) {
+  var youngAge = array.reduce(function(prev, curr){
+    if (prev.age < curr.age) {
+      return prev;
+    } else {
+      return curr;
+    } 
+  })
+  return youngAge.name;
+}
 
-var averageBalance;
+var averageBalance = function(array) {
+  var balanceArray = array.map(function(customers){
+    return customers.balance;
+  })
+  let sum = 0;
+  for (let i = 0; i < balanceArray.length; i++) {
+    if (customers[i].balance) {
+      sum += customers[i].balance;
+    }
+  }
+  let average = sum / customers.balance.length;
+  return average;
+}
 
 var firstLetterCount = function(array, letter) {
-  var letterCount = 0;
-  var firstLetter = _.indexOf(array, array[0]) 
-  return letterCount = number + 1;
+  
 }
 
 var friendFirstLetterCount;
