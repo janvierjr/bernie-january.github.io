@@ -2,9 +2,44 @@
 // range ///////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function range() {
-
+function range(x, y, z) {
+  // create an ouput variable
+  let output = [];
+  // determine if x === y
+  if (x === y) {
+    return output;
+  }
+  // determine if z was passed into the function else no z passed in
+  if (z === undefined) {
+    if (x < y) {
+      // create for loop starting at x, ending at y that is ascending
+        // push the current value of i into output
+    } else { // if x is greater
+      // create a for loup starting at x, ending at y that is descending
+        // push the current value of i into output
+    }
+  } else {
+    if (z < 0) {
+      return output;
+    }
+    if (x < y) {
+      // create for loop starting at x, ending at y, incrementing by z, that is ascending
+        // push the current value of i into output
+    } else { // if x is greater
+      // create a for loup starting at x, ending at y, decrementing by z, that is descending
+        // push the current value of i into output
+    }
+  }
 }
+
+/***
+ * range(1, 4); => [1, 2, 3, 4]
+ * range(4, 1); => [4, 3, 2, 1]
+ * range(1, 4, 2); => [1, 3]
+ * range(4, 1, 2); => [3, 1]
+ * range(1, 1); => []
+ * range(1, 4, -1); => []
+ */
 
 ////////////////////////////////////////////////////////////////////////////////
 // sum /////////////////////////////////////////////////////////////////////////
@@ -17,6 +52,13 @@ function sum() {
 ////////////////////////////////////////////////////////////////////////////////
 // reverseArray ////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
+/***
+ * var arr = [1, 2, 3]
+ * reverseArray(arr); => [3, 2, 1]
+ * console.log(arr); => [1, 2, 3]
+ * 
+ * return a reversed copy of the input array
+ */
 
 function reverseArray() {
 
@@ -25,6 +67,12 @@ function reverseArray() {
 ////////////////////////////////////////////////////////////////////////////////
 // reverseArrayInPlace /////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
+/***
+ * var arr = [1, 2, 3];
+ * console.log(arr); => [3, 2, 1]
+ * 
+ * must mutate the original array
+ */
 
 function reverseArrayInPlace() {
 
@@ -33,17 +81,48 @@ function reverseArrayInPlace() {
 ////////////////////////////////////////////////////////////////////////////////
 // arrayToList /////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
+/**
+ * arrayToList([10, 20, 30]);
+ * =>
+ * value: 10,
+ * rest: {
+ *    value: 20, 
+ *    rest: {
+ *      value: 30
+ *      rest: null
+ *    }  
+ *   }
+ * }
+ */
 
-function arrayToList() {
-
+function arrayToList(array) {
+// create a variable called rest and initialize it to null
+  let rest = null;
+  // iterate backwards through input array
+  for (let i = array.length - 1; i >= 0; i--){
+    // reassign rest to an object with a value prop equal to array[i] and rest prop equal to 
+    // current value of rest
+    rest = { value: array[i], rest };
+  }
+  return rest;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 // listToArray /////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
+/**
+ * listToArray(...object)
+ */
 
-function listToArray() {
-
+function listToArray(obj, output=[]) {
+  // base
+  if (obj.rest === null) {
+    output.push(obj.value)
+    return output;
+  }
+  // recursion
+  output.push(obj.value);
+  return listToArray(obj.rest, output);
 }
 
 ////////////////////////////////////////////////////////////////////////////////

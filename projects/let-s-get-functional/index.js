@@ -79,10 +79,32 @@ var averageBalance = function(array) {
 }
 
 var firstLetterCount = function(array, letter) {
-  
+  let letterCount = 0;
+  var capLet = letter.toUpperCase();
+  var firstLetter = array.filter(function(customer){
+    if (customer.name.charAt(0) === capLet) {
+      return letterCount += 1;
+    } else {
+      return letterCount += 0;
+    }
+  });
+  return letterCount;
 }
 
-var friendFirstLetterCount;
+var friendFirstLetterCount = function(array, customer, letter) {;
+let friendCount = 0;
+var capLet = letter.toUpperCase();
+var haveFriends = array.filter(function(customer) {
+  return customer.friends;
+}).filter(function(friend){
+  if (friend.name.charAt(0) === capLet) {
+    return friendCount += 1;
+  } else {
+    return friendCount += 0;
+  }
+});
+return friendCount;
+};
 
 var friendsCount;
 
