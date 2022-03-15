@@ -65,17 +65,17 @@ var youngestCustomer = function(array) {
 }
 
 var averageBalance = function(array) {
-  var balanceArray = array.map(function(customers){
-    return customers.balance;
-  })
-  let sum = 0;
-  for (let i = 0; i < balanceArray.length; i++) {
-    if (customers[i].balance) {
-      sum += customers[i].balance;
-    }
-  }
-  let average = sum / customers.balance.length;
+  //get all the balances from each customer and create a total balance with reduce method
+  var sumBalance = array.reduce(function(total, curr){
+    let strCurr = curr.balance;
+    let noDollar = strCurr.replace(/[^a-zA-Z0-9,+]/, '');
+    let numCurr = parseFloat(noDollar);
+    total += numCurr;
+    return total;
+  }, 0);
+  let average = (sumBalance / array.length);
   return average;
+  // average = divide by # of customers
 }
 
 var firstLetterCount = function(array, letter) {
@@ -106,7 +106,14 @@ var haveFriends = array.filter(function(customer) {
 return friendCount;
 };
 
-var friendsCount;
+var friendsCount = function(array, name) {
+  var hasFriend = array.filter(function(customer) {
+    return customer.friends.includes(name);
+  }).map(function(customer){
+    return customer.name;
+  });
+  return hasFriend;
+}
 
 var topThreeTags;
 
