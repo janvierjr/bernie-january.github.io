@@ -82,12 +82,10 @@ var sumBelow = function(n) {
     return 0;
   }
   // recursion
-  if (n === 0) {
-    return 0 + sumBelow(n - 1);
-  } else if (n < 0) {
-    return (n * -1) + sumBelow(n + 1);
-   } else if (n > 0) {
-    return n + sumBelow(n - 1);
+  if (n < 0) {
+    return ((n * -1)) - sumBelow((n * -1) + 1);
+     } else {
+    return (n - 1) + sumBelow(n - 1);
   }
 };
 
@@ -105,11 +103,19 @@ var range = function(x, y, output = []) {
   if (x === y) {
     return output;
   }
-  if ((x + 1) !== y) {
+  if ((x + 1) < y) {
     output.push(x + 1)
   }
+  if ((x - 1) > y) {
+    output.push(x - 1)
+  }
   //recursion
-  return range(x + 1, y, output);
+  if (x < y) {
+    return range(x + 1, y, output);
+  } 
+  if (x > y) {
+    return range(x - 1, y , output);
+  }
 };
 
 // 7. Compute the exponent of a number.
