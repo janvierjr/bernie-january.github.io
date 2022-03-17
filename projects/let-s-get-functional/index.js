@@ -4,6 +4,7 @@
 
 var customers = require('./data/customers.json');
 var _ = require('underbar');
+const { filter } = require('lodash');
 
 /**
  * 1. Import your lodown module using the require() method,
@@ -91,20 +92,26 @@ var firstLetterCount = function(array, letter) {
   return letterCount;
 }
 
-var friendFirstLetterCount = function(array, customer, letter) {;
-let friendCount = 0;
-var capLet = letter.toUpperCase();
-var haveFriends = array.filter(function(customer) {
-  return customer.friends;
-}).filter(function(friend){
-  if (friend.name.charAt(0) === capLet) {
-    return friendCount += 1;
-  } else {
-    return friendCount += 0;
-  }
-});
-return friendCount;
+var friendFirstLetterCount = function(array, customer, letter) {
+  // iterate through the input array 
+
+    for (let i = 0; i < array.length; i++) {
+       // does array[i].name equals input string customer
+      if (array[i].name === customer) {
+        // filter through customer friends array to find if object.name first letter === letter
+        var haveFriends = array[i]["friends"].filter(function(friend){
+          if (friend.name.charAt(0).toLowerCase() === letter.toLowerCase()) {
+            return true;
+          } else {
+            return false;
+          }
+        });
+      }
+    }
+    return haveFriends.length;
 };
+
+
 
 var friendsCount = function(array, name) {
   var hasFriend = array.filter(function(customer) {
