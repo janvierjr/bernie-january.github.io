@@ -135,47 +135,53 @@ var exponent = function(base, exp, output = 0) {
     output += exponent(base, exp - 1, output) * base;
   }
   // recursion
-  // determine
-  // if (exp > 0 && exp % 2 == 0) {
-  // }
+ 
   return output;
 };
-/**
- * 8, 3
- * // FALSE // 8 * 8 // [64] return func call 3-1 // 2
- * [64]
- * // FALSE // [64] 
- * output should equal exponent value of base
- * 
- */
+
 
 
 // 8. Determine if a number is a power of two.
 // powerOfTwo(1); // true
 // powerOfTwo(16); // true
 // powerOfTwo(10); // false
-var powerOfTwo = function(n) {
+var powerOfTwo = function(num, output = true) {
   // base
-  if (Math.sqrt(n ** n) % n === 0) {
-    return true;
+  if (Math.sqrt(num) === Math.sqrt(num)) {
+    return output;
   }
   // recursion
-  if (n / powerOfTwo(n) >= 1) {
-    return false;
-  };
+  if (Math.sqrt(num) !== Math.sqrt(num)) {
+    return powerOfTwo(num, output);
+  }
+  output = false;
+  return output;
 };
+
+/***
+ * outputs: boolean value: true or false
+ * inputs: number
+ * 
+ */
 
 // 9. Write a function that accepts a string a reverses it.
 var reverse = function(string, output = "") {
   // base
-  if (string.charAt(0) === string[string.length - 1])
+  if (string.charAt(0) === output.charAt(output.length - 1)) {
   return output;
+  }
   // recursion
-  if (string.length !== 0) {
-   output += string.charAt(string.length - 1) + reverse(string.slice(string.length - 1), output);
+  if (string.length > 0) {
+   output += string.charAt(string.length - 1);
+   return reverse(string.slice(0, -1), output);
   } 
   return output;
 };
+
+/***
+ * "Racecar"
+ * 
+ */
 
 // 10. Write a function that determines if a string is a palindrome.
 var palindrome = function(string) {
