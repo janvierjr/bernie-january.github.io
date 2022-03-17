@@ -184,19 +184,22 @@ var reverse = function(string, output = "") {
  */
 
 // 10. Write a function that determines if a string is a palindrome.
-var palindrome = function(string) {
+var palindrome = function(string, output = "") {
   // base
-  if (string.length === 0) {
+  let strPass = string.toLowerCase().replace(/\s/g, '')
+  if (strPass.length < 0) {
     return false;
-  }
-  if (string[0] !== string[string.length - 1]) {
+    } 
+  if (strPass[0] !== strPass[strPass.length - 1]) {
     return false;
+    } 
+  if (strPass.charAt(0) === strPass.length - 1) {
+    output += strPass.charAt(0);
   }
-  // recursion
-  if (string[0].toLowerCase().replace(/\s/g, "") === string[string.length - 1].toLowerCase().replace(/\s/g, "")) {
-    stringNew = string.slice(1, -1);
-    palindrome(stringNew);
-  } 
+if (strPass.length === strPass[strPass.length - 1]) {
+  output += strPass.charAt(0);
+  return palindrome(strPass.slice(1, -1), output);
+    }
   return true;
 };
 
@@ -265,15 +268,16 @@ var compareStr = function(str1, str2) {
 
 // 16. Write a function that accepts a string and creates an array where each letter
 // occupies an index of the array.
-var createArray = function(str){
+var createArray = function(str, output = []){
   // base
-  var strArr = str.split("");
-  if (str.length === strArr.length) {
-    return strArr;
-  }
+ if (str.length === 0) {
+   return output
+ }
   // recursion
-  return strArr[0] + createArray(strArr.slice(1));
+  output.push(str.charAt(0));
+  return createArray(str.slice(1), output);
 };
+ 
 
 // 17. Reverse the order of an array
 var reverseArr = function (array) {
@@ -288,17 +292,17 @@ var reverseArr = function (array) {
 // 18. Create a new array with a given value and length.
 // buildList(0,5) // [0,0,0,0,0]
 // buildList(7,3) // [7,7,7]
-var buildList = function(value, length) {
+var buildList = function(value, length, output = []) {
   // base
-  let arr = [];
-  if (arr.length === (length)) {
-    return arr;
+  if (length === 0) {
+    return output;
   }
 
   // recursion
-  arr = [value + buildList(value, length - 1)];
-  return arr;
+  output.push(value);
+  return buildList(value, length - 1, output);
 };
+
 
 // 19. Count the occurence of a value inside a list.
 // countOccurrence([2,7,4,4,1,4], 4) // 3
@@ -356,7 +360,16 @@ var fibonacci = function(n) {
 // nthFibo(5); // 5
 // nthFibo(7); // 13
 // nthFibo(3); // 2
-var nthFibo = function(n) {
+var nthFibo = function(n) { 
+  if (n < 0) {
+    return null;
+  } 
+  if (n === 0) {
+    return 0;
+  }
+  if (n < 3) 
+    return 1;
+    return nthFibo(n - 1) + nthFibo(n - 2)
 };
 
 // 26. Given an array of words, return a new array containing each word capitalized.
