@@ -30,8 +30,25 @@ function every() {
  * will be reviewed in class by Alex
  */
 
-function dominantDirection() {
-
+function dominantDirection(str) { //"Hello!"
+// create variable to point to str
+ let newStr = str;
+ // create arrays to store ltr/rtl results
+ let ltr = [];
+ let rtl = [];
+ // iterate through string copy
+ for (var i = 0; i < str.length; i++) {
+   let scriptName = characterScript(newStr.charCodeAt(i));
+   // if scriptName is NOT null
+   if (scriptName !== null) {
+     scriptName.direction === 'ltr' ? ltr.push(scriptName.name) : rtl.push(scriptName.name);
+   }
+ }
+ if (ltr.length > rtl.length) {
+   return 'ltr';
+ } else {
+   return 'rtl';
+ }
 }
 
 // /////////////////////////////////////////////////////////////////////////////

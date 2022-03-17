@@ -165,11 +165,18 @@ var reverse = function(string, output = "") {
 // 10. Write a function that determines if a string is a palindrome.
 var palindrome = function(string) {
   // base
-  if (string[0] === string[string.length - 1]) {
-    return true;
+  if (string.length === 0) {
+    return false;
+  }
+  if (string[0] !== string[string.length - 1]) {
+    return false;
   }
   // recursion
-  return string.toLowerCase().charAt[0] === palindrome(string.toLowerCase()[string.length - 1])
+  if (string[0].toLowerCase().replace(/\s/g, "") === string[string.length - 1].toLowerCase().replace(/\s/g, "")) {
+    stringNew = string.slice(1, -1);
+    palindrome(stringNew);
+  } 
+  return true;
 };
 
 // 11. Write a function that returns the remainder of x divided by y without using the
@@ -239,28 +246,56 @@ var compareStr = function(str1, str2) {
 // occupies an index of the array.
 var createArray = function(str){
   // base
-  if (str.length === newString.length) {
-    return;
+  var strArr = str.split("");
+  if (str.length === strArr.length) {
+    return strArr;
   }
   // recursion
-  var newString = str.split()
-  return createArray(newString[0] + newString.slice(1))
+  return strArr[0] + createArray(strArr.slice(1));
 };
 
 // 17. Reverse the order of an array
 var reverseArr = function (array) {
+  // base case
+  if (array.length === 1) {
+    return array[0];
+  }
+  // recursion
+  return [array.pop()].concat(reverseArr(array))
 };
 
 // 18. Create a new array with a given value and length.
 // buildList(0,5) // [0,0,0,0,0]
 // buildList(7,3) // [7,7,7]
 var buildList = function(value, length) {
+  // base
+  let arr = [];
+  if (arr.length === (length)) {
+    return arr;
+  }
+
+  // recursion
+  arr = [value + buildList(value, length - 1)];
+  return arr;
 };
 
 // 19. Count the occurence of a value inside a list.
 // countOccurrence([2,7,4,4,1,4], 4) // 3
 // countOccurrence([2,'banana',4,4,1,'banana'], 'banana') // 2
 var countOccurrence = function(array, value) {
+  let count = 0;
+  // base
+  if (array.length === 0) {
+    return array;
+  } else if (!array.includes(value)) {
+    return array;
+  }
+  // recursion
+  if (array[0] === value) {
+    count += 1;  
+    return countOccurance(array.splice(1), value);  
+  }
+  return count;
 };
 
 // 20. Write a recursive version of map.
@@ -307,6 +342,13 @@ var nthFibo = function(n) {
 // var words = ['i', 'am', 'learning', 'recursion'];
 // capitalizedWords(words); // ['I', 'AM', 'LEARNING', 'RECURSION']
 var capitalizeWords = function(input) {
+  let output = [];
+  // base
+  if (input.length === 1) {
+    return input[0];
+  }
+  // recursion
+  return [input.shift()].concat(capitalizeWords(input));
 };
 
 // 27. Given an array of strings, capitalize the first letter of each index.
