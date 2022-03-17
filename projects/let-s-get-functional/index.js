@@ -112,15 +112,26 @@ var friendFirstLetterCount = function(array, customer, letter) {
 };
 
 
-
+/***
+ * input: array of customers and name "string"
+ * output: array
+ */
 var friendsCount = function(array, name) {
-  var hasFriend = array.filter(function(customer) {
-    return customer.friends.includes(name);
-  }).map(function(customer){
-    return customer.name;
-  });
-  return hasFriend;
-}
+  let friendsArr = [];
+  for (let i = 0; i < array.length; i++) {
+    if (array[i].hasOwnProperty("friends")) {
+      let friendsMatch = array[i]["friends"].filter(function(friend){
+          if (friend.name === name) {
+              friendsArr.push(array[i].name);
+              return true;
+          } else {
+            return false;
+          }
+      });
+    }
+  }
+  return friendsArr;
+};
 
 var topThreeTags;
 
