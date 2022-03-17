@@ -2,34 +2,47 @@
 // range ///////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function range(x, y, z) {
+function range(start, end, step) {
   // create an ouput variable
-  let output = [];
-  // determine if x === y
-  if (x === y) {
-    return output;
+  let result = [];
+  // determine if start === end
+  if (start === end) {
+    return result;
   }
-  // determine if z was passed into the function else no z passed in
-  if (z === undefined) {
-    if (x < y) {
-      // create for loop starting at x, ending at y that is ascending
+  // determine if step was passed into the function else no step passed in
+  if (step === undefined) {
+    if (start < end) {
+      for (let i = start; i <= end; i++) {
+        result.push(i);
+      }
+      // create for loop starting at start, ending at end that is ascending
         // push the current value of i into output
-    } else { // if x is greater
-      // create a for loup starting at x, ending at y that is descending
+    } else { // if start is greater
+      for (let i = end; i <= start; i--) {
+        result.push(i);
+      }
+      // create a for loup starting at end, ending at start that is descending
         // push the current value of i into output
     }
   } else {
-    if (z < 0) {
-      return output;
+    if (step < 0) {
+      return result;
     }
-    if (x < y) {
-      // create for loop starting at x, ending at y, incrementing by z, that is ascending
+    if (start < end) {
+      for (let i = start; i <= end; i += step) {
+        result.push(i);
+      }
+      // create for loop starting at start, ending at end, incrementing by step, that is ascending
         // push the current value of i into output
-    } else { // if x is greater
-      // create a for loup starting at x, ending at y, decrementing by z, that is descending
+    } else { // if start is greater
+      for (let i = end; i<= start; i -= step) {
+        result.push(i);
+      }
+      // create a for loup starting at start, ending at end, decrementing by step, that is descending
         // push the current value of i into output
     }
   }
+  return result;
 }
 
 /***
@@ -45,8 +58,12 @@ function range(x, y, z) {
 // sum /////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function sum() {
-
+function sum(arr) {
+  let total = 0;
+  for (let i = 0; i < arr.length; i++) {
+    total += arr[i];  
+  }
+  return total;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
