@@ -133,9 +133,36 @@ var friendsCount = function(array, name) {
   return friendsArr;
 };
 
-var topThreeTags;
+/**
+ * inputs: array
+ * outputs: array of top 3 common tags
+ */
+var topThreeTags = function(array){
+  let topThree = array
+  .filter(function(customer, i, array){
+    if (array[i].tags === customer.tags) {
+      return true;
+    } else {
+      return false;
+    }
+  })
 
-var genderCount;
+};
+
+
+var genderCount = function(array){
+  let count = array.reduce(function(obj, customer){
+    if (customer.gender === "male") {
+      obj.male += 1;
+    } else if (customer.gender === "female"){
+      obj.female += 1;
+    } else {
+      obj["non-binary"] += 1;
+    }
+  }, {});
+  return count;
+};
+
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
