@@ -136,30 +136,52 @@ var friendsCount = function(array, name) {
 /**
  * inputs: array
  * outputs: array of top 3 common tags
+ * 1. iterate through each customers tags array to collect an array of all tags
+ * 2. iterate through all tags array to count tag duplicates
+ * 3  return array of 3 most common tags
+ * 
  */
 var topThreeTags = function(array){
-  let topThree = array
-  .filter(function(customer, i, array){
-    if (array[i].tags === customer.tags) {
-      return true;
-    } else {
-      return false;
-    }
-  })
 
 };
 
-
+/**
+ * input: array of customers
+ * output: new object, where key <gender> = value <# of customers w/ gender>
+ * constraint: use reduce array method 
+ * 
+ * Steps:
+ * 1. iterate through customers array to count how many are male v. female v. non-binary
+ * 2. store male, female, and non-binary values in a new object as key <gender> : value <count> pairs
+ * 3 return new object 
+ * 
+ */
 var genderCount = function(array){
-  let count = array.reduce(function(obj, customer){
-    if (customer.gender === "male") {
-      obj.male += 1;
-    } else if (customer.gender === "female"){
-      obj.female += 1;
-    } else {
-      obj["non-binary"] += 1;
+  let count = array.reduce(function(prev, curr){
+    var objCount = {};
+    if (prev.gender !== curr.gender) {
+      if (curr.gender === "male") {
+        objCount["male"] = 1;
+      } 
+      if (curr.gender === "female") {
+        objCount["female"] = 1;
+      }
+      if (curr.gender === "non-binary") {
+        objCount["non-binary"] = 1;
+      } 
+    } else if (prev.gender === curr.gender) {
+      if (curr.gender === "male") {
+        objCount["male"] += 1;
+      } 
+      if (curr.gender === "female") {
+        objCount["female"] += 1;
+      }
+      if (curr.gender === "non-binary") {
+        objCount["non-binary"] += 1;
+      } 
     }
-  }, {});
+    return objCount;
+  }, 0);
   return count;
 };
 

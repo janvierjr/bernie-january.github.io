@@ -307,25 +307,32 @@ var buildList = function(value, length, output = []) {
 // 19. Count the occurence of a value inside a list.
 // countOccurrence([2,7,4,4,1,4], 4) // 3
 // countOccurrence([2,'banana',4,4,1,'banana'], 'banana') // 2
-var countOccurrence = function(array, value) {
-  let count = 0;
+var countOccurrence = function(array, value, output = 0) {
   // base
   if (array.length === 0) {
-    return array;
-  } else if (!array.includes(value)) {
-    return array;
-  }
+    return output;
+  } 
   // recursion
   if (array[0] === value) {
-    count += 1;  
-    return countOccurance(array.splice(1), value);  
-  }
-  return count;
+    output += 1;  
+    return countOccurrence(array.splice(1), value, output);  
+  } 
+  if (array[0] !== value) {
+    return countOccurrence(array.splice(1), value, output);
+   }  
+  return output;
 };
 
 // 20. Write a recursive version of map.
 // rMap([1,2,3], timesTwo); // [2,4,6]
-var rMap = function(array, callback) {
+var rMap = function(array, callback, output = []) {
+  // base
+  if (array.length === 0) {
+    return output;
+  }
+  // recursion
+  output.push(array[0] * 2);
+  return rMap(array.slice(1), callback, output);
 };
 
 // 21. Write a function that counts the number of times a key occurs in an object.
@@ -424,21 +431,27 @@ var flatten = function(arrays) {
 // letterTally('potato'); // {'p':1, 'o':2, 't':2, 'a':1}
 var letterTally = function(str, obj = {}) {
   // base
-  if (str.length === 0) {
-    return obj;
-  }
+ if (str.length === 0) {
+   return obj;
+ }
   // recursion
-  var strArr = str.split("");
-  var prop = strArr[0];
-  // for (var i = 0; i < strArr.length; i++) {
-  if (obj.hasOwnProperty(prop)) {  
-    obj.prop += 1;
-    return letterTally(strArr.splice(1), obj)
-  } else {
-    obj.prop = 1;
-    return letterTally(strArr.splice(1), obj)
-  }
-};
+ //  let strArr = str.split("");
+  for (let i = 0; i < str.length; i++) {
+    for (let j = 0; j < str.length; j++) {
+     let letterA = str[i];
+     let letterB = str[j];
+     if (obj[letterA] === 1) {
+       obj[letterA] += 1;
+       return letterTally(str.slice(1), obj)
+     }
+     if (letterA === letterB) {
+       obj[letterA] = 1;
+       return letterTally(str.slice(1), obj);
+     } 
+    }
+   }
+   return obj;
+ };
 
 /**
  * input: string
