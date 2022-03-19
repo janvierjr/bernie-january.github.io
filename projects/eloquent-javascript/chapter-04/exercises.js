@@ -155,8 +155,19 @@ function listToArray(obj, output=[]) {
 // prepend /////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function prepend() {
-
+function prepend(array, list) {
+  let obj = {};
+  // iterate backwards through input array
+  for (let i = array.length - 1; i >= 0; i--){
+    // reassign rest to an object with a value prop equal to array[i] and rest prop equal to 
+    // current value of rest
+    if (obj.value !== array[0]) {
+      array.unshift(array[i]);
+      obj.value = array[i];
+    }
+    Object.assign(obj, list);
+    }
+  return obj;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
