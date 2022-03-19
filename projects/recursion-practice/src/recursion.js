@@ -145,17 +145,23 @@ var exponent = function(base, exp, output = 0) {
 // powerOfTwo(1); // true
 // powerOfTwo(16); // true
 // powerOfTwo(10); // false
-var powerOfTwo = function(num, output = true) {
+var powerOfTwo = function(num, output = false) {
   // base
-  if (Math.sqrt(num) === Math.sqrt(num)) {
+  if (num === 0) {
     return output;
   }
-  // recursion
-  if (Math.sqrt(num) !== Math.sqrt(num)) {
-    return powerOfTwo(num, output);
+  if (num === 1) {
+    output = true;
+    return output;
   }
-  output = false;
-  return output;
+
+  // recursion
+  if (Math.sqrt(num) !== Math.round(Math.sqrt(num))) {
+    return powerOfTwo(num = 0, output);
+  }
+  if (Math.sqrt(num) === Math.round(Math.sqrt(num))) {
+    return powerOfTwo(num = 1, output);
+  }
 };
 
 /***
@@ -536,18 +542,58 @@ var alternateSign = function(array, output = []) {
 // 35. Given a string, return a string with digits converted to their word equivalent.
 // Assume all numbers are single digits (less than 10).
 // numToText("I have 5 dogs and 6 ponies"); // "I have five dogs and six ponies"
-var numToText = function(str, output = "") {
-// var wordsArr = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"];
-// var numsArr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-  // base
-  if (!str.includes(/[0-9]/)) {
-    return output;
-  }
-  // recursion
-  if (str.includes(/[0]/))
-  output += str.replace(0, "zero");
-  return numToText(str.replace(/[0]/g, ''), output)
-};
+var numToText = function(str, output = []) {
+    // base
+    if (str.length === 0) {
+      return output.join("");
+    }
+    // recursion   
+    if (str[0] === "0") {
+      output.push("zero");
+      return numToText(str.slice(1), output)
+    } 
+      if (str[0] === "1") {
+      output.push("one");
+      return numToText(str.slice(1), output)
+    } 
+      if (str[0] === "2") {
+      output.push("two");
+      return numToText(str.slice(1), output)
+    }  
+      if (str[0] === "3") {
+      output.push("three");
+      return numToText(str.slice(1), output)
+    } 
+      if (str[0] === "4") {
+      output.push("four");
+      return numToText(str.slice(1), output)
+    } 
+      if (str[0] === "5") {
+      output.push("five");
+      return numToText(str.slice(1), output)
+    } 
+      if (str[0] === "6") {
+      output.push("six");
+      return numToText(str.slice(1), output)
+    } 
+      if (str[0] === "7") {
+      output.push("seven");
+      return numToText(str.slice(1), output)
+    } 
+      if (str[0] === "8") {
+      output.push("eight");
+      return numToText(str.slice(1), output)
+    } 
+      if (str[0] === "9") {
+      output.push("nine");
+      return numToText(str.slice(1), output)
+    }
+    if (str[0] !== 0) {
+      output.push(str[0]);
+      return numToText(str.slice(1), output)
+    }
+    
+  };
 
 // *** EXTRA CREDIT ***
 
