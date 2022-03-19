@@ -77,8 +77,12 @@ function sum(arr) {
  * return a reversed copy of the input array
  */
 
-function reverseArray() {
-
+function reverseArray(arr) {
+let reverse = [];
+  for (let i = arr.length - 1; i >= 0; i--) {
+    reverse.push(arr[i]);
+  }
+  return reverse.splice(0);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -91,8 +95,13 @@ function reverseArray() {
  * must mutate the original array
  */
 
-function reverseArrayInPlace() {
-
+ function reverseArrayInPlace(arr) {
+  for (var i = 0; i < Math.floor(arr.length / 2); i++) {
+     var old = arr[i];
+     arr[i] = arr[arr.length - 1 - i];
+     arr[arr.length - 1 - i] = old;
+  }
+  return arr;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
