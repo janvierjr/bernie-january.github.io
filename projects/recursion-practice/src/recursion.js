@@ -482,26 +482,71 @@ var compress = function(list, output = []) {
 // 32. Augment every element in a list with a new value where each element is an array
 // itself.
 // Example: augmentElements([[],[3],[7]], 5); // [[5],[3,5],[7,5]]
-var augmentElements = function(array, aug) {
+var augmentElements = function(array, aug, output = []) {
+    // base
+  if (array === 0) {
+    return output;
+  }
+    // recursion
+  output.push(array[0].concat(aug));
+  return augmentElements(array.splice(1), aug, output);
 };
 
 // 33. Reduce a series of zeroes to a single 0.
 // minimizeZeroes([2,0,0,0,1,4]) // [2,0,1,4]
 // minimizeZeroes([2,0,0,0,1,0,0,4]) // [2,0,1,0,4]
-var minimizeZeroes = function(array) {
+
+var minimizeZeroes = function(array, output = []) {
+  // base
+  if (array.length === 0){
+  return output;
+  }
+  // recursion
+  if (array[0] !== array[1]) {
+    output.push(array[0]);
+    return minimizeZeroes(array.slice(1), output);
+  }
+  if (array[0] === array[1]) {
+    output.push(array[0]);
+    output.pop(array[0])
+    return minimizeZeroes(array.slice(1), output);
+  }
 };
 
 // 34. Alternate the numbers in an array between positive and negative regardless of
 // their original sign.  The first number in the index always needs to be positive.
 // alternateSign([2,7,8,3,1,4]) // [2,-7,8,-3,1,-4]
 // alternateSign([-2,-7,8,3,-1,4]) // [2,-7,8,-3,1,-4]
-var alternateSign = function(array) {
+var alternateSign = function(array, output = []) {
+  // base
+  if (array.length === 0) {
+    return output;
+  }
+  // recursion
+  if (Math.abs(array[0]) / array[0] === array[1] / array[1]) {
+    output.push((array[0]));
+    return alternateSign(array.slice(1), output);
+  }
+  if (Math.abs(array[0]) !== array[0]) {
+    output.push(array[0] * -1);
+    return alternateSign(array.slice(1), output);
+  }
 };
 
 // 35. Given a string, return a string with digits converted to their word equivalent.
 // Assume all numbers are single digits (less than 10).
 // numToText("I have 5 dogs and 6 ponies"); // "I have five dogs and six ponies"
-var numToText = function(str) {
+var numToText = function(str, output = "") {
+// var wordsArr = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"];
+// var numsArr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+  // base
+  if (!str.includes(/[0-9]/)) {
+    return output;
+  }
+  // recursion
+  if (str.includes(/[0]/))
+  output += str.replace(0, "zero");
+  return numToText(str.replace(/[0]/g, ''), output)
 };
 
 // *** EXTRA CREDIT ***
