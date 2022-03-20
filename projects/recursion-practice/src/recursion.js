@@ -147,20 +147,18 @@ var exponent = function(base, exp, output = 0) {
 // powerOfTwo(10); // false
 var powerOfTwo = function(num, output = false) {
   // base
-  if (num === 0) {
+  if (num == 0) {
     return output;
   }
   if (num === 1) {
     output = true;
     return output;
   }
-
   // recursion
-  if (Math.sqrt(num) !== Math.round(Math.sqrt(num))) {
-    return powerOfTwo(num = 0, output);
-  }
-  if (Math.sqrt(num) === Math.round(Math.sqrt(num))) {
-    return powerOfTwo(num = 1, output);
+  if (num / 2 > 0 && num === Math.round(num))
+    return powerOfTwo((num / 2), output);
+  if (num / 2 > 0 && num !== Math.round(num)) {
+    return output;
   }
 };
 
@@ -190,23 +188,21 @@ var reverse = function(string, output = "") {
  */
 
 // 10. Write a function that determines if a string is a palindrome.
-var palindrome = function(string, output = "") {
+var palindrome = function(string, output = false) {
   // base
-  let strPass = string.toLowerCase().replace(/\s/g, '')
-  if (strPass.length < 0) {
-    return false;
-    } 
-  if (strPass[0] !== strPass[strPass.length - 1]) {
-    return false;
-    } 
-  if (strPass.charAt(0) === strPass.length - 1) {
-    output += strPass.charAt(0);
+  let newString = string.toLowerCase().replace(/\s/g, '');
+
+  if (newString.length === 0) {
+    output = true;
+    return output;
   }
-if (strPass.length === strPass[strPass.length - 1]) {
-  output += strPass.charAt(0);
-  return palindrome(strPass.slice(1, -1), output);
-    }
-  return true;
+  // recursion
+  if(newString[0] === newString[newString.length - 1]) {
+    return palindrome(newString.slice(1, (newString.length - 1)), output);
+  }
+  if(newString[0] !== newString[newString.length - 1]) {
+    return output;
+  }
 };
 
 // 11. Write a function that returns the remainder of x divided by y without using the
