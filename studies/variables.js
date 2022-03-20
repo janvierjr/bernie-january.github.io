@@ -3,12 +3,15 @@
  * VARIABLES:
  * 
  * 0: Variables are named identifiers bound to a section of our program. 
- To hold values in memory in a variable in JavaScript, we use the keywords: var, const, and/or let, followed
- by a named identifier we choose to give our variable. Names should relate the nature of the value being stored.
- Variables are either able to contain values of primitive datatypes: a string, number, or boolean or point to 
- a location in memory where a complex datatype value is stored: an object, array, or function. 
- Variables are important for data value retrieval. 
- If we don't store values in containers like variables, we can never retrieve those values.
+ * To hold values in memory in a variable in JavaScript, we use the keywords: var, const, and/or let, followed
+ * by a named identifier we choose to give our variable. Names should relate the nature of the value being stored.
+ * 
+ * Variables are either able to contain values of primitive datatypes: a string, number, or boolean or point to 
+ * a location in memory where a complex datatype value is stored: an object, array, or function. 
+ * 
+ * Variables are important for data value retrieval. 
+ * If we don't store values in containers like variables, we can never retrieve those values.
+ * 
  * 1. To declare a variable, use the var keyard followed by a name we give our variable
  * 2. There are 2 phases of using variables: declaration and assignement.
  */

@@ -19,7 +19,7 @@
  * 
  * 6. Functions can access variables / values from the global scope but not from other function scoped variables / values.
  * 
- * 7. Closures
+ * 7. Closures maintain access to variables in a parent scope by enclosing them in function bodies.
  * 
  */
 
@@ -55,3 +55,22 @@ let funcScope = function (str) {
 
 funcScope(testStr); // this function can modify the global variable testStr // prints => hello 
 funcScope(numParam); // this function cannot modify the function scoped numParam from above // prints => Reference Error: <numParam not defined>
+
+// 7. Closure
+/***
+ * Below, the invocation of <newFunction>, which holds the parent scoped variable of <outerVar>, is an
+ * example of closure. When <newFunction> is called, it has access to <outerVar> and prints the string
+ * with the <outerVar> variable within it when returned.
+ * 
+ */ 
+
+function outerFunction(outerVar) {
+    return function innerFunction(innerVar) {
+      console.log("outer variable: " + outerVar);
+      console.log("inner variable: " + innerVar);
+    }
+  }
+  
+  let newFunction = outerFunction("outside");
+  newFunction(); // prints => "outer variable outside" "inner variable undefined" // nothing was passed as an argument i.e. no defined <innerVar>
+  newFunction("inside"); // prints => "outer variable outside" "inner variable inside" // arguments of both variables defined, specifically <outerVar> due to closure

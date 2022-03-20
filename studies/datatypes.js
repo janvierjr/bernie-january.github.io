@@ -1,10 +1,10 @@
 /**
 * DATATYPES:
 * Different types of values in JavaScript. There are effectively two category of datatypes: primitive and complext.
-1. Primitive or simple data types include: Number, String, Boolean, NaN, undefined, and null. Atomoic, immutable: they do not hold, collect,
-or aggregate other values. Maximum size of 8 bytes.
-2. Complex datatypes include: object, array, and function. Aggregates others values and therefore has an indefinite size. Complex datatypes can also
-change in size.
+* 1. Primitive or simple data types include: Number, String, Boolean, NaN, undefined, and null. Atomoic, immutable: they do not hold, collect,
+* or aggregate other values. Maximum size of 8 bytes.
+* 2. Complex datatypes include: object, array, and function. Aggregates others values and therefore has an indefinite size. Complex datatypes can also
+* change in size.
 */ 
 
 // 1. Number

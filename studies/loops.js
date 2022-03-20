@@ -5,7 +5,9 @@
  * of code as many times as needed. They are used for iterating through
  * collections of data and allow us to pull, update, or transform values
  * within a collection, one by one.
+ * 
  * 1. There are 3 loop types: while, for, and for-in loops. 
+ * 
  * 2. Loops require a start variable to initialize an index; an end condition; and an 
  * iterator to increment through the loop. Failing to specify an end condition or increment
  *  can create an infinite loop, which will crash the program.
