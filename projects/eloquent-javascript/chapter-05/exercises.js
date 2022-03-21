@@ -13,16 +13,14 @@ function flatten(array) {
 // loop ////////////////////////////////////////////////////////////////////////
 // /////////////////////////////////////////////////////////////////////////////
 
-function loop(value, test, updateFunc, bodyFunc) {
-  for (let i = 0; i < value.length; i++) {
-    let looper = value.forEach(function(test){
-      if (test(value[i]) === false) {
-        return bodyFunc(value[i]);
-      } else {
-        return updateFunc(value[i]);
-      }
-    });
-    return looper;
+function loop(value, testFunction, updateFunction, bodyFunction) {
+  for (let i = value; testFunction(i); i = updateFunction(i)) {
+    if (value > 0) {
+      bodyFunction(i, testFunction, updateFunction, bodyFunction) 
+      return loop((i - 1), testFunction, updateFunction, bodyFunction);
+    } else if (value <= 0) {
+      return bodyFunction(i);
+    }
   }
 };
 
@@ -30,8 +28,18 @@ function loop(value, test, updateFunc, bodyFunc) {
 // every ///////////////////////////////////////////////////////////////////////
 // /////////////////////////////////////////////////////////////////////////////
 
-function every() {
-
+function every(arr, predicate) {
+  let notEvery = [];
+  for (let i = 0; i < arr.length; i++) {
+    if (!predicate(arr[i])) {
+      notEvery.push("found one")
+    }
+  }
+  if (notEvery.length > 0) {
+    return false;
+  } else {
+    return true;
+  }
 }
 
 // /////////////////////////////////////////////////////////////////////////////
