@@ -135,29 +135,32 @@ var friendsCount = function(array, name) {
  - **Input**: `Array`
  - **Output**: `Array`
  - **Constraints**:
- * inputs: array
- * outputs: array of top 3 common tags
- * 1. iterate through each customers tags array to collect an array of all tags
- * 2. iterate through all tags array to count tag duplicates
- * 3  return array of 3 most common tags
- * 
  */
-var topThreeTags = function(array){
-  let counter = {};
-  let allTags = array
-  .filter(function(tag){
-    if (array.tags.includes(tag)) {
-      array.join("");
-      return true;
-    } else {
-      return false;
-    }
-  })
-  .filter(function(prev, current){
-    if (current.tag === prev.tag) {
-      counter.tag += 1;
-    }
-  })
+ var topThreeTags = function(array){
+  // use reduce to get an object with key as tag and value as count
+  let countObj = array.reduce(function(acc, curr) {
+      // if (acc.includes(curr.tags)) {
+        let tags = curr.tags;
+        // iterate through tags array
+        for (let i = 0; i < tags.length; i++) {
+          // determine if object has prop then += 1
+          if (acc.hasOwnProperty(tags[i])) {
+            acc[tags[i]] += 1;
+        } else {
+          // else if object not prop then = 1
+            acc[tags[i]] = 1;
+        }
+      }
+      return acc;
+  }, {});
+   // use Object.entries to create array of arrays
+      let arrTags = Object.entries(countObj);
+      arrTags.sort(function(a, b){
+      // use sort to a[1] - b[1]
+      return b[1] - a[1];
+    })
+  let topThree = [ arrTags[0][0], arrTags[1][0], arrTags[2][0] ]
+  return topThree;
 };
 
 /**
