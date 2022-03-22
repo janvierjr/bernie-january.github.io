@@ -66,17 +66,13 @@ var youngestCustomer = function(array) {
 }
 
 var averageBalance = function(array) {
-  //get all the balances from each customer and create a total balance with reduce method
-  var sumBalance = array.reduce(function(total, curr){
+  let balance = array.reduce(function(total, curr){
     let strCurr = curr.balance;
-    let noDollar = strCurr.replace(/[^a-zA-Z0-9,+]/, '');
+    let noDollar = Number(strCurr.replace(/[^0-9.-]+/g,""));
     let numCurr = parseFloat(noDollar);
-    total += numCurr;
-    return total;
+    return total += numCurr; 
   }, 0);
-  let average = (sumBalance / array.length);
-  return average;
-  // average = divide by # of customers
+  return balance / array.length;
 }
 
 var firstLetterCount = function(array, letter) {
@@ -134,6 +130,11 @@ var friendsCount = function(array, name) {
 };
 
 /**
+ * ### 9: `topThreeTags`
+ - **Objective**: Find the three most common tags among all customers' associated tags
+ - **Input**: `Array`
+ - **Output**: `Array`
+ - **Constraints**:
  * inputs: array
  * outputs: array of top 3 common tags
  * 1. iterate through each customers tags array to collect an array of all tags
@@ -142,7 +143,21 @@ var friendsCount = function(array, name) {
  * 
  */
 var topThreeTags = function(array){
+  let count = 0;
+  let allTags = array
+  .filter(function(tag){
+    if (array.tags.includes(tag)) {
+      array.join("");
+      return true;
+    } else {
+      return false;
+    }
+  })
+  .filter(function(prev, current){
+    if (current.tag === prev.tag) {
 
+    }
+  })
 };
 
 /**
