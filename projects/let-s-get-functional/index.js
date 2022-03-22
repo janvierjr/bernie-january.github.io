@@ -143,7 +143,7 @@ var friendsCount = function(array, name) {
  * 
  */
 var topThreeTags = function(array){
-  let count = 0;
+  let counter = {};
   let allTags = array
   .filter(function(tag){
     if (array.tags.includes(tag)) {
@@ -155,7 +155,7 @@ var topThreeTags = function(array){
   })
   .filter(function(prev, current){
     if (current.tag === prev.tag) {
-
+      counter.tag += 1;
     }
   })
 };
@@ -171,33 +171,27 @@ var topThreeTags = function(array){
  * 3 return new object 
  * 
  */
-var genderCount = function(array){
-  let count = array.reduce(function(prev, curr){
-    var objCount = {};
-    if (prev.gender !== curr.gender) {
-      if (curr.gender === "male") {
-        objCount["male"] = 1;
-      } 
-      if (curr.gender === "female") {
-        objCount["female"] = 1;
-      }
-      if (curr.gender === "non-binary") {
-        objCount["non-binary"] = 1;
-      } 
-    } else if (prev.gender === curr.gender) {
-      if (curr.gender === "male") {
-        objCount["male"] += 1;
-      } 
-      if (curr.gender === "female") {
-        objCount["female"] += 1;
-      }
-      if (curr.gender === "non-binary") {
-        objCount["non-binary"] += 1;
-      } 
+ var genderCount = function(array){
+  let mCount = 0;
+  let fCount = 0;
+  let bCount = 0;
+  let obj = {};
+  let gender = array.reduce(function(prev, curr) {
+    if (curr.gender === "male") {
+      mCount += 1;
+      return Object.assign(obj, { "male": mCount });
     }
-    return objCount;
-  }, 0);
-  return count;
+    if (curr.gender === "female") {
+      fCount += 1;
+      return Object.assign(obj, { "female": fCount});
+    }
+    if (curr.gender === "non-binary") {
+      bCount += 1;
+      return Object.assign(obj, { "non-binary": bCount});
+    }
+    return obj;
+  }, {});
+  return gender;
 };
 
 
