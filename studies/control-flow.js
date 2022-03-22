@@ -27,11 +27,12 @@ if (number20 === 15) {
 // 2. Else-if
 /* To give other options within in a conditional statement/control flow, an <else-if> can be chained 
 to the <if> statement. <else-if> statements provide a selection of different test-conditions that 
-can be executed if true.
+can be executed if true. Only when an <if> / <else-if> condition is evaluated as true will the condition
+execute; a given condition will not be executed and will be skipped over when said condition is evaluated as false.
 */
 var number10 = 10;
 if (number10 === 20) {
-    console.log(`Number is 20.`) // FALSE // prints nothing
+    console.log(`Number is 20.`) // FALSE // prints nothing // not executed as a result of evaluating to FALSE
 } else if (number10 < 20) {
     console.log(`Number is less than 20.`) // TRUE // prints => "Number is less than 20."
 } else {

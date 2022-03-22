@@ -13,8 +13,12 @@
 // 2. String
 "string data" // any character data, identified with single or double quotations
 
-// 3. Boolean
+// 3.a Boolean value
 true // true or false
+
+// 3.b Boolean Expressions
+// boolean values can be evaluated with comparison operators like: <, >, ===, !==, etc.
+console(10 > 5); // prints => true 
 
 // 4. Array
 // indexed list-like objects identified by brackets []

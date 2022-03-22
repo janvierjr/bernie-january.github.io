@@ -45,7 +45,7 @@ let subtract3 = function(num) {
 
 console.log(subtract3(5)); // prints => 2
 
-// 6. Function Scope
+// 6.a Function Scope
 // Functions can access variables / values from the global scope but not from other function scoped variables / values
 let testStr = "hello";
 
@@ -56,8 +56,22 @@ let funcScope = function (str) {
 funcScope(testStr); // this function can modify the global variable testStr // prints => hello 
 funcScope(numParam); // this function cannot modify the function scoped numParam from above // prints => Reference Error: <numParam not defined>
 
+// 6.b Function Scope Assignment
+// Functions can access variables / values from the global scope and have the ability to reassign those variables
+let str = "Hello";
+
+function changeString() {
+ str = "Bye";
+}
+
+console.log(str); // str variable // prints => Hello 
+changeString(); // invokes the function <changeString>
+console.log(str); // str variable // prints => Bye // after function invocation reassigns the global scoped variable <str>
+
 // 7. Closure
 /***
+ * Closure allows for an association between the data environment(parent/global scoped variables/values) with a function that operates on that data.
+ * Global variables and actions can be made "private" with closures.
  * Below, the invocation of <newFunction>, which holds the parent scoped variable of <outerVar>, is an
  * example of closure. When <newFunction> is called, it has access to <outerVar> and prints the string
  * with the <outerVar> variable within it when returned.
